@@ -2,7 +2,7 @@
 
 ## Setting up environment
 
-### Tools
+#### Tools
 
 Profectus requires a node development environment in order to work on a project. If you are familiar with node, then you can skip this section.
 
@@ -13,9 +13,9 @@ If you are comfortable with/willing to use the command line, it is recommended t
 
 If you'd like, you can also choose to use [replit](https://replit.com) or [glitch](https://glitch.com), which has several pros and cons, but one of the pros is not needing to setup any tool on your own computer.
 
-### Creating your project
+#### Creating your project
 
-If you are using git, you should create a new project from the [Profectus repository](https://github.com/profectus-engine/Profectus). You can then copy the link for the repository to clone it locally.
+If you are using git, you should create a new project from the [Profectus repository](https://github.com/profectus-engine/Profectus) via the "Use this template" button. You can then copy the link for the repository to clone it locally.
 
 ::: info
 Since the repository is a template repository, you can easily create new repos from it, allowing you to have multiple project easily. However, it does make updating an existing project to a newer version of Profectus more difficult.
@@ -25,7 +25,7 @@ It's recommended to create a new git branch for development, so you can push you
 
 The next step is to install Profectus' dependencies. This is as simple as running `npm install`.
 
-### Running your project
+#### Running your project
 
 You can now run `npm serve` to start a local server that will host your project so you can work on it. As you change files the site will automatically reload them.
 
@@ -33,11 +33,11 @@ You can now run `npm serve` to start a local server that will host your project 
 
 At least to start, everything you'll be messing with is inside the `/src/data` directory. This contains everything specific to the project itself, from its metadata, the content itself, utility functions, a changelog, and any custom UI themes.
 
-### Setting up project metadata
+#### Setting up project metadata
 
 The first file you'll want to edit is `/src/data/modInfo.json`. This contains information on the name of the project, its creator, a discord server to link to, and some other general information about the project.
 
-### Creating your project
+#### Creating your project
 
 Being actually creating your project content by editing `mod.tsx`.
 

@@ -14,5 +14,3 @@ features:
       details: Designed to actively encourage you to become better at programming
 footer: Copyright © 2022 thepaperpilot
 ---
-Profectus is a super cool engine for making browser based games!
-
