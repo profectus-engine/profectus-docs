@@ -1,0 +1,4 @@
+/* Hide Github button that goes to profectus-docs */
+.nav-links > .item:last-child {
+	display: none;
+}

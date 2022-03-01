@@ -4,7 +4,7 @@ title: Home
 heroText: Profectus
 tagline: A game engine that grows with you
 actionText: Get Started
-actionLink: /docs/getting-started
+actionLink: /guide/getting-started
 features:
     - title: Easy to Use
       details: Everything is written to be as intuitive to use as possible
