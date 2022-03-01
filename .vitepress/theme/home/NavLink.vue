@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue'
 import { useRoute, withBase } from 'vitepress'
-import { useNavLink } from '../composables/navLink'
-import OutboundLink from './icons/OutboundLink.vue'
 
 const props = defineProps<{
   item: {
