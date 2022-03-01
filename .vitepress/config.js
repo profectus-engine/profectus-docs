@@ -14,11 +14,13 @@ module.exports = {
     lastUpdated: 'Last Updated',
     nav: [
       { text: "Guide", link: "/guide/", activeMatch: "^/guide/" },
+      { text: "API", link: "/api/", activeMatch: "^/api/" },
       { text: "Forums", link: "https://forums.moddingtree.com" },
       { text: "Discord", link: "https://discord.gg/F3xveHV" },
       { text: "Github", link: "https://github.com/profectus-engine/Profectus" }
     ],
-    sidebar: [
+    sidebar: {
+      "/guide/": [
         {
           text: "Guide",
           children: [
@@ -30,6 +32,7 @@ module.exports = {
           text: "Creating Features",
           children: []
         }
-      ]
+      ],
+    }
   }
 }
