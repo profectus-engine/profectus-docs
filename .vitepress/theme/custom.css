@@ -2,3 +2,7 @@
 .nav-links > .item:last-child {
 	display: none;
 }
+
+.custom-block.info {
+	background-color: #3B4252;
+}
