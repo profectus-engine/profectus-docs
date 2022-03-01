@@ -2,7 +2,7 @@
   <Layout>
     <template #home>
       <main class="home" aria-labelledby="main-title">
-        <Profectus style="height: 30vmin; margin: auto; display: block" />
+        <Profectus v-if="showLogo" style="height: 30vmin; margin: auto; display: block" />
         <HomeHero />
         <HomeFeatures />
         <div class="home-content">
@@ -15,6 +15,7 @@
 </template>
 
 <script setup>
+import { nextTick, ref } from 'vue';
 import DefaultTheme from 'vitepress/theme';
 import Profectus from './Profectus.vue';
 // I want Profectus above the hero text, so I effectively need to recreate the Home class now
@@ -22,6 +23,8 @@ import HomeHero from './home/HomeHero.vue';
 import HomeFeatures from './home/HomeFeatures.vue';
 import HomeFooter from './home/HomeFooter.vue';
 const { Layout } = DefaultTheme;
+const showLogo = ref(false);
+nextTick(() => showLogo.value = true);
 </script>
 
 <style scoped>
