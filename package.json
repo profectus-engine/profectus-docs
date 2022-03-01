@@ -1,0 +1,22 @@
+{
+  "name": "profectus-docs",
+  "version": "1.0.0",
+  "description": "Documentation for the Profectus Engine",
+  "main": "index.js",
+  "scripts": {
+    "serve": "vitepress serve",
+    "dev": "vitepress dev",
+    "build": "vitepress build"
+  },
+  "repository": "git+https://github.com/profectus-engine/profectus-docs.git",
+  "author": "thepaperpilot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/profectus-engine/profectus-docs/issues"
+  },
+  "homepage": "https://github.com/profectus-engine/profectus-docs#readme",
+  "dependencies": {
+    "vitepress": "^0.22.3"
+  },
+  "private": true
+}

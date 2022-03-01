@@ -1,0 +1,10 @@
+:root {
+  --c-white: #2E3440;
+  --c-white-dark: #3B4252;
+  --c-text-light-1: #D8DEE9;
+  --c-text-light-2: #E5E9F0;
+  --c-text-light-3: #ECEFF4;
+  --c-brand: #5E81AC;
+  --c-brand-light: #88C0D0;
+  --font-family-base: Roboto Mono,monospace;
+}

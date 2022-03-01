@@ -1,0 +1,4 @@
+[submodule "profectus"]
+	path = profectus
+	url = https://github.com/profectus-engine/Profectus
+	branch = main
