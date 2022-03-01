@@ -18,7 +18,7 @@ If you'd like, you can also choose to use [replit](https://replit.com) or [glitc
 If you are using git, you should create a new project from the [Profectus repository](https://github.com/profectus-engine/Profectus) via the "Use this template" button. You can then copy the link for the repository to clone it locally.
 
 ::: info
-Since the repository is a template repository, you can easily create new repos from it, allowing you to have multiple project easily. However, it does make updating an existing project to a newer version of Profectus more difficult.
+Since the repository is a template repository, you can easily create multiple projects from one repository. However, it does make updating an existing project to a newer version of Profectus more difficult.
 :::
 
 It's recommended to create a new git branch for development, so you can push your changes without it affecting the live build. This allows you to continue working with smaller commits, and only release new versions when you're actually ready to. The github workflow will automatically rebuild the page whenever you push to the `main` branch.
