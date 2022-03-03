@@ -3,6 +3,7 @@
     <template #home>
       <main class="home" aria-labelledby="main-title">
         <Profectus v-if="showLogo" style="height: 30vmin; margin: auto; display: block" />
+        <div v-else style="height: 30vmin; margin: auto; display: block" />
         <HomeHero />
         <HomeFeatures />
         <div class="home-content">
