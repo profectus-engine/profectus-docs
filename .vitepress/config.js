@@ -22,10 +22,21 @@ module.exports = {
     sidebar: {
       "/guide/": [
         {
-          text: "Guide",
+          text: "Getting Started",
           children: [
             { text: "Introduction", link: "/guide/" },
-            { text: "Getting Started", link: "/guide/getting-started" }
+            { text: "Setting Up", link: "/guide/setup" },
+            { text: "Updating Profectus", link: "/guide/updating" }
+          ]
+        },
+        {
+          text: "Creating Your Project",
+          children: [
+            { text: "Project Info", link: "/guide/project-info" },
+            { text: "Project Entry", link: "/guide/project-entry" },
+            { text: "Layers", link: "/guide/layers" },
+            { text: "Changelog", link: "/guide/changelog" },
+            { text: "Themes", link: "/guide/themes" }
           ]
         },
         {
