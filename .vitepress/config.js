@@ -8,7 +8,9 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
-    ['script', { defer: true, 'data-domain': 'moddingtree.com', src: 'https://plausible.io/js/plausible.js' }]
+    ['script', { defer: true, 'data-domain': 'moddingtree.com', src: 'https://plausible.io/js/plausible.js' }],
+    ['meta', { name: 'og:description', content: 'A game engine that grows with you' }],
+    ['meta', { name: 'og:image', content: '/Logo.png' }]
   ],
   themeConfig: {
     repo: 'profectus-engine/profectus-docs',
