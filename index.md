@@ -8,9 +8,8 @@ actionLink: /guide/setup
 features:
     - title: Easy to Use
       details: Everything is written to be as intuitive to use as possible
-    - title: Well integrated
-      details: Seamlessly deploy your project, get type hints in your IDE, etc.
+    - title: Helpful
+      details: Seamlessly deploy your project, get type hints in your IDE, and more
     - title: Incremental
       details: Designed to actively encourage you to become better at programming
-footer: Copyright © 2022 thepaperpilot
 ---
