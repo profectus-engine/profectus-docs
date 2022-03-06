@@ -33,6 +33,10 @@ Before github knows to actually host the generated site, you'll have to enable g
 
 Once the action completes, your project should be available at `https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>/`. For example, the TMT Demo project hosted at https://github.com/profectus-engine/TMT-Demo is available at https://profectus-engine.github.io/TMT-Demo/.
 
+### Visual Studio Code Setup
+
+If you don't already have a preferred IDE, Profectus is currently developed in [Visual Studio Code](https://code.visualstudio.com) and is known to work well with that IDE in particular. It's recommend to use [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471) for proper type analysis, and consider turning off `.value` autocomplete by running the `Preferences: Open Settings` command and setting `volar.autoCompleteRefs` to `false`.
+
 ## Replit
 
 As an alternative to local development, you may use [replit](https://replit.com), which will automatically set up your development environment for you and also host your project itself.

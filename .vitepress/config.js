@@ -3,7 +3,7 @@ module.exports = {
   title: 'Profectus',
   description: 'A game engine that grows with you.',
   head: [
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
@@ -41,14 +41,25 @@ module.exports = {
           children: [
             { text: "Project Info", link: "/guide/project-info" },
             { text: "Project Entry", link: "/guide/project-entry" },
-            { text: "Layers", link: "/guide/layers" },
             { text: "Changelog", link: "/guide/changelog" },
-            { text: "Themes", link: "/guide/themes" }
+            { text: "Themes", link: "/guide/themes" },
+            { text: "Utilities", link: "/guide/utils" }
           ]
         },
         {
-          text: "Creating Features",
-          children: []
+          text: "Important Concepts",
+          children: [
+            { text: "Layers", link: "/guide/layers" },
+            { text: "Features", link: "/guide/features" },
+            { text: "Coercable Components", link: "/guide/coercable" },
+            { text: "Reactivity", link: "/guide/reactivity" }
+          ]
+        },
+        {
+          text: "Advanced Concepts",
+          children: [
+            { text: "Creating Features", link: "/guide/creating-features" }
+          ]
         }
       ],
     }
