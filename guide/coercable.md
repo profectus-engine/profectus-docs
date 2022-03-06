@@ -10,7 +10,7 @@ Template strings need to be wrapped in some HTML element. By default, they'll be
 
 ## Render Functions (JSX)
 
-You can provide a render function and it will be wrapped in a component as well. The intended use for this is to write JSX inside a function, which will get automatically converted into a render function. You can read more about that process on the Vue docs on [Render Functions & JSX](https://v2.vuejs.org/v2/guide/render-function.html). Note that JSX must be returned in a function - it does not work "standalone". The CoercableComponent type will enforce this for you.
+You can provide a render function and it will be wrapped in a component as well. The intended use for this is to write JSX inside a function, which will get automatically converted into a render function. You can read more about that process on the Vue docs on [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html#render-functions-jsx). Note that JSX must be returned in a function - it does not work "standalone". The CoercableComponent type will enforce this for you.
 
 JSX can use imported components, making this suited for writing the display properties on things like Tabs or Layers. There are also built-in functions to `render` features (either as their own or in a layout via `renderRow` and `renderCol`), so you don't need to import the Vue component for every feature you plan on using.
 
