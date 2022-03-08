@@ -10,3 +10,7 @@
 .custom-block.warning {
 	background-color: #EBCB8B;
 }
+
+tr:nth-child(2n) {
+    background-color: var(--code-bg-color);
+}

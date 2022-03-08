@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "vitepress serve",
     "dev": "vitepress dev",
-    "build": "vitepress build"
+    "build": "vitepress build",
+    "typedoc": "cd profectus && vue-typedoc --logLevel Verbose --plugin typedoc-plugin-markdown --hideBreadcrumbs --hideInPageTOC --entryDocument index.md --plugin typedoc-plugin-rename-defaults --plugin typedoc-plugin-mdn-links"
   },
   "repository": "git+https://github.com/profectus-engine/profectus-docs.git",
   "author": "thepaperpilot",
@@ -18,5 +19,22 @@
   "dependencies": {
     "vitepress": "^0.22.3"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@ivanv/vue-collapse-transition": "^1.0.2",
+    "@types/webpack-env": "^1.16.3",
+    "nanoevents": "^6.0.2",
+    "typedoc": "^0.22.13",
+    "typedoc-plugin-markdown": "^3.11.14",
+    "typedoc-plugin-mdn-links": "^1.0.5",
+    "typedoc-plugin-rename-defaults": "^0.4.0",
+    "typescript": "~4.5.5",
+    "vue-docgen-cli": "^4.44.17",
+    "vue-next-select": "^2.10.2",
+    "vue-panzoom": "^1.1.6",
+    "vue-textarea-autosize": "^1.1.1",
+    "vue-toastification": "^2.0.0-rc.1",
+    "vue-typedoc": "https://github.com/thepaperpilot/vue-typedoc",
+    "vuedraggable": "^2.24.3"
+  }
 }
