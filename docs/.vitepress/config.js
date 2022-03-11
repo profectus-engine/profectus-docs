@@ -73,6 +73,7 @@ module.exports = {
 function generateAPISidebar() {
   const sidebar = [];
 
+  console.log(path.resolve("./docs/api/modules"))
   const modules = fs.readdirSync("./docs/api/modules");
   modules.forEach(file => {
     const moduleSidebar = { text: camelToTitle(file), children: [] };

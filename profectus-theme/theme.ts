@@ -14,7 +14,6 @@ export class ProfectusTheme extends MarkdownTheme {
   constructor(renderer: Renderer) {
     super(renderer);
 
-    console.log("!?!?!")
     this.entryDocument = 'index.md';
     this.hideBreadcrumbs = true;
     this.hideInPageTOC = true;
