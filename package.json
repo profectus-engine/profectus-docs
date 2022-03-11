@@ -7,8 +7,7 @@
     "serve": "vitepress serve docs",
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "typedoc": "cd profectus && vue-typedoc --logLevel Verbose --plugin typedoc-plugin-markdown --hideBreadcrumbs --hideInPageTOC --entryDocument index.md --plugin typedoc-plugin-rename-defaults --plugin typedoc-plugin-mdn-links",
-    "docgen": "vue-docgen -c docgen.config.js && node copyComponents.js"
+    "generate": "tsc --project ./profectus-theme && cd profectus && vue-typedoc --logLevel Verbose --plugin ../typedoc-theme/index.js --theme profectus --plugin typedoc-plugin-markdown --plugin typedoc-plugin-rename-defaults --plugin typedoc-plugin-mdn-links && cd .. && vue-docgen -c docgen.config.js && node copyComponents.js"
   },
   "repository": "git+https://github.com/profectus-engine/profectus-docs.git",
   "author": "thepaperpilot",
