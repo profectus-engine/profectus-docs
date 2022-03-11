@@ -36,7 +36,8 @@ module.exports = {
           children: [
             { text: "Introduction", link: "/guide/" },
             { text: "Setting Up", link: "/guide/setup" },
-            { text: "Updating Profectus", link: "/guide/updating" }
+            { text: "Updating Profectus", link: "/guide/updating" },
+            { text: "Example Projects", link: "/guide/examples" }
           ]
         },
         {
