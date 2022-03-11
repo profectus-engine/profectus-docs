@@ -4,9 +4,9 @@
   "description": "Documentation for the Profectus Engine",
   "main": "index.js",
   "scripts": {
-    "serve": "vitepress serve",
-    "dev": "vitepress dev",
-    "build": "vitepress build",
+    "serve": "vitepress serve docs",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
     "typedoc": "cd profectus && vue-typedoc --logLevel Verbose --plugin typedoc-plugin-markdown --hideBreadcrumbs --hideInPageTOC --entryDocument index.md --plugin typedoc-plugin-rename-defaults --plugin typedoc-plugin-mdn-links",
     "docgen": "vue-docgen -c docgen.config.js && node copyComponents.js"
   },

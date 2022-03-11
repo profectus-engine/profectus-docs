@@ -71,30 +71,23 @@ module.exports = {
 }
 
 function generateAPISidebar() {
-  const modules = fs.readdirSync("./api/modules").map(file => file.substr(0, file.length - 3));
-  const moduleFolders = {};
+  const sidebar = [];
+
+  const modules = fs.readdirSync("./docs/api/modules");
   modules.forEach(file => {
-    // Split by _, but not break_eternity
-    const pieces = file.replace("break_eternity", "break~eternity").split(/_/).map(piece => piece === "break~eternity" ? "break_eternity" : piece);
-    const lineItem = { text: camelToTitle(pieces[pieces.length - 1]), link: `/api/modules/${file}` };
-    pieces.slice(0, pieces.length - 1).reduce((acc, curr) => {
-      // console.log(acc, curr);
-      if (!acc[curr]) {
-        acc[curr] = { text: camelToTitle(curr), children: [] };
-      }
-      return acc[curr].children;
-    }, moduleFolders).push(lineItem);
+    const moduleSidebar = { text: camelToTitle(file), children: [] };
+    sidebar.push(moduleSidebar)
+    walk(path.join("./docs/api/modules", file), moduleSidebar.children);
   });
-  const sidebar = processFolders(moduleFolders);
 
   const componentFolders = [];
-  walk("./api/components", componentFolders);
+  walk("./docs/api/components", componentFolders);
   sidebar.unshift({
     text: "Components",
     children: componentFolders
   });
 
-  walk("./api/features", sidebar.find(item => item.text === "Features").children);
+  walk("./docs/api/features", sidebar.find(item => item.text === "Features").children);
 
   sort(sidebar);
 
@@ -134,7 +127,7 @@ function walk(dir, sidebar) {
       }
       walk(resolvedFile, folder.children);
     } else {
-      sidebar.push({ text: camelToTitle(file.substr(0, file.length - 3)), link: resolvedFile.substr(0, resolvedFile.length - 3) + ".html" });
+      sidebar.push({ text: camelToTitle(file.substr(0, file.length - 3)), link: "/" + resolvedFile.substr(5, resolvedFile.length - 8).replace(/\\/g, "/") + ".html" });
     }
   });
 }
@@ -146,13 +139,4 @@ function camelToTitle(camel) {
     let title = camel.replace(/([A-Z])/g, " $1");
     title = title.charAt(0).toUpperCase() + title.slice(1);
     return title;
-}
-
-function processFolders(folders) {
-  return Object.values(folders).map(folder => {
-    if (folder.children) {
-      folder.children = processFolders(folder.children);
-    }
-    return folder;
-  })
 }

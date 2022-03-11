@@ -29,4 +29,4 @@ function walk(dir, dest) {
         });
     });
 }
-walk("./components", "./api");
+walk("./components", "./docs/api");
