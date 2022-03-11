@@ -62,7 +62,8 @@ module.exports = {
         {
           text: "Advanced Concepts",
           children: [
-            { text: "Creating Features", link: "/guide/creating-features" }
+            { text: "Creating Features", link: "/guide/creating-features" },
+            { text: "Dynamic Layers", link: "/guide/dynamic-layers" }
           ]
         }
       ],
