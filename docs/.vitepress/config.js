@@ -17,7 +17,7 @@ module.exports = {
   ],
   themeConfig: {
     repo: 'profectus-engine/profectus-docs',
-    docsDir: '',
+    docsDir: 'docs',
     docsBranch: 'main',
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
