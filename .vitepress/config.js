@@ -1,11 +1,12 @@
 const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   lang: "en-US",
   title: 'Profectus',
   description: 'A game engine that grows with you.',
   head: [
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,600;1,400' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
@@ -71,7 +72,7 @@ module.exports = {
 
 function generateAPISidebar() {
   const modules = fs.readdirSync("./api/modules").map(file => file.substr(0, file.length - 3));
-  const folders = {};
+  const moduleFolders = {};
   modules.forEach(file => {
     // Split by _, but not break_eternity
     const pieces = file.replace("break_eternity", "break~eternity").split(/_/).map(piece => piece === "break~eternity" ? "break_eternity" : piece);
@@ -82,9 +83,60 @@ function generateAPISidebar() {
         acc[curr] = { text: camelToTitle(curr), children: [] };
       }
       return acc[curr].children;
-    }, folders).push(lineItem);
+    }, moduleFolders).push(lineItem);
   });
-  return processFolders(folders);
+  const sidebar = processFolders(moduleFolders);
+
+  const componentFolders = [];
+  walk("./api/components", componentFolders);
+  sidebar.unshift({
+    text: "Components",
+    children: componentFolders
+  });
+
+  walk("./api/features", sidebar.find(item => item.text === "Features").children);
+
+  sort(sidebar);
+
+  return sidebar;
+}
+
+function sort(sidebar) {
+  sidebar.filter(sidebar => !!sidebar.children).forEach(item => sort(item.children));
+  sidebar.sort((a, b) => {
+    if (a.children && !b.children) {
+      return -1;
+    } else if (!a.children && b.children) {
+      return 1;
+    } else if (a.text > b.text) {
+      return 1;
+    } else if (a.text < b.text) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
+
+function walk(dir, sidebar) {
+  const files = fs.readdirSync(dir);
+  files.forEach(file => {
+    const resolvedFile = path.join(dir, file);
+    const stat = fs.statSync(resolvedFile);
+    if (stat.isDirectory()) {
+      let folder = sidebar.find(item => item.text === camelToTitle(file));
+      if (!folder) {
+        folder = {
+          text: camelToTitle(file),
+          children: []
+        };
+        sidebar.push(folder);
+      }
+      walk(resolvedFile, folder.children);
+    } else {
+      sidebar.push({ text: camelToTitle(file.substr(0, file.length - 3)), link: resolvedFile.substr(0, resolvedFile.length - 3) + ".html" });
+    }
+  });
 }
 
 function camelToTitle(camel) {
