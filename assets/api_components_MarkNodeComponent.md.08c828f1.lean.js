@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,a as o}from"./app.5f8923ba.js";const f='{"title":"Component: MarkNode","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/components/MarkNodeComponent.md"}',r={},n=o("",3),s=[n];function d(p,l,i,_,c,h){return a(),t("div",null,s)}var k=e(r,[["render",d]]);export{f as __pageData,k as default};

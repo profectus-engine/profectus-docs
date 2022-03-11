@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r,a as l}from"./app.858e000e.js";const x='{"title":"Component: TreeNode","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/features/trees/TreeNodeComponent.md"}',p={},o=l("",3),d=[o];function n(s,a,i,g,c,y){return r(),e("div",null,d)}var _=t(p,[["render",n]]);export{x as __pageData,_ as default};

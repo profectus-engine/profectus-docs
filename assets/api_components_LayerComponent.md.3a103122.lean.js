@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r,a as l}from"./app.858e000e.js";const x='{"title":"Component: Layer","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/components/LayerComponent.md"}',p={},n=l("",3),a=[n];function d(s,o,i,y,g,c){return r(),e("div",null,a)}var _=t(p,[["render",d]]);export{x as __pageData,_ as default};
