@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r,a as l}from"./app.5f8923ba.js";const f='{"title":"Component: Grid","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/features/grids/GridComponent.md"}',s={},a=l("",3),d=[a];function p(o,i,n,c,_,h){return r(),e("div",null,d)}var y=t(s,[["render",p]]);export{f as __pageData,y as default};

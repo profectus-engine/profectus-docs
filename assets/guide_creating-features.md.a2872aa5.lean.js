@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a,a as o}from"./app.5f8923ba.js";const f='{"title":"Creating Features","description":"","frontmatter":{},"headers":[],"relativePath":"guide/creating-features.md"}',i={},n=o("",3),r=[n];function s(c,d,u,l,p,h){return a(),t("div",null,r)}var m=e(i,[["render",s]]);export{f as __pageData,m as default};
