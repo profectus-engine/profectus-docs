@@ -129,3 +129,10 @@ The longest duration a single tick can be, in seconds. When calculating things l
 - Default: `1`
 
 The max amount of time that can be stored as offline time, in hours. 
+
+### enablePausing
+
+- Type: `boolean`
+- Default: `true`
+
+Whether or not to allow the player to pause the game. Turning this off disables the toggle from the options menu as well as the NaN screen. Developers can still manually pause by just running `player.devSpeed = 0` in console (or `= 1` to resume).
