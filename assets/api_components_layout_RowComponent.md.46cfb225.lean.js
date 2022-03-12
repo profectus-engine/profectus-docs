@@ -1,0 +1,1 @@
+import{_ as t,c as e,o,a}from"./app.54d5a277.js";const f='{"title":"Component: Row","description":"","frontmatter":{},"headers":[{"level":2,"title":"Slots","slug":"slots"}],"relativePath":"api/components/layout/RowComponent.md"}',n={},r=a("",3),s=[r];function l(d,_,c,i,h,p){return o(),e("div",null,s)}var u=t(n,[["render",l]]);export{f as __pageData,u as default};

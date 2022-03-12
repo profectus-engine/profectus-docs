@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as r,a as l}from"./app.858e000e.js";const _='{"title":"Component: GridCell","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/features/grids/GridCellComponent.md"}',p={},d=l("",3),n=[d];function a(o,i,s,c,g,y){return r(),e("div",null,n)}var h=t(p,[["render",a]]);export{_ as __pageData,h as default};
