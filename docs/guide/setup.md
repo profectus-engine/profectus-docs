@@ -19,7 +19,7 @@ It's recommended to create a new git branch for development, so you can push you
 
 The next step is to install Profectus' dependencies. This is as simple as running `npm install`.
 
-You can now run `npm serve` to start a local server that will host your project so you can work on it. As you change files the site will automatically reload them.
+You can now run `npm run serve` to start a local server that will host your project so you can work on it. As you change files the site will automatically reload them.
 
 ### Deploying
 
