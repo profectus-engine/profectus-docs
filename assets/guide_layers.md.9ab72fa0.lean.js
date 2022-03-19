@@ -1,1 +1,0 @@
-import{_ as e,c as a,o as t,a as r}from"./app.54d5a277.js";const f='{"title":"Layers","description":"","frontmatter":{},"headers":[{"level":2,"title":"Lazy Proxies","slug":"lazy-proxies"}],"relativePath":"guide/layers.md"}',s={},o=r("",6),i=[o];function n(c,l,d,h,y,u){return t(),a("div",null,i)}var _=e(s,[["render",n]]);export{f as __pageData,_ as default};
