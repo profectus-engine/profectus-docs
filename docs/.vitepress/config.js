@@ -56,7 +56,8 @@ module.exports = {
             { text: "Layers", link: "/guide/layers" },
             { text: "Features", link: "/guide/features" },
             { text: "Coercable Components", link: "/guide/coercable" },
-            { text: "Reactivity", link: "/guide/reactivity" }
+            { text: "Reactivity", link: "/guide/reactivity" },
+            { text: "Persistence", link: "/guide/persistence" }
           ]
         },
         {
