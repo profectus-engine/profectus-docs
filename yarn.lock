@@ -1981,9 +1981,9 @@ vue-tsc@0.32.1:
     "@volar/shared" "0.32.1"
     vscode-vue-languageservice "0.32.1"
 
-"vue-typedoc@https://github.com/thepaperpilot/vue-typedoc":
+"vue-typedoc@git+https://github.com/thepaperpilot/vue-typedoc":
   version "0.22.12"
-  resolved "git+ssh://git@github.com/thepaperpilot/vue-typedoc.git#6128dc6e784bdde701a0e4293fb88eea1786ddeb"
+  resolved "git+https://github.com/thepaperpilot/vue-typedoc#6128dc6e784bdde701a0e4293fb88eea1786ddeb"
   dependencies:
     vue-tsc "0.32.1"
 
