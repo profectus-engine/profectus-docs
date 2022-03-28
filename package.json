@@ -24,6 +24,8 @@
     "@ivanv/vue-collapse-transition": "^1.0.2",
     "@types/webpack-env": "^1.16.3",
     "nanoevents": "^6.0.2",
+    "particles.vue3": "^2.0.3",
+    "tsparticles": "^2.0.3",
     "typedoc": "^0.22.13",
     "typedoc-plugin-markdown": "^3.11.14",
     "typedoc-plugin-mdn-links": "^1.0.5",
