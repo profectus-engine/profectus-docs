@@ -1,1 +1,0 @@
-import{_ as a,c as n,o as s,a as t}from"./app.8e8712eb.js";const h='{"title":"Changelog","description":"","frontmatter":{},"headers":[],"relativePath":"guide/changelog.md"}',e={},o=t("",6),p=[o];function c(l,u,i,k,g,r){return s(),n("div",null,p)}var m=a(e,[["render",c]]);export{h as __pageData,m as default};

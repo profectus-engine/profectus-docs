@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as n,a as r}from"./app.8e8712eb.js";const m='{"title":"Component: Link","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/components/links/LinkComponent.md"}',a={},o=r("",3),l=[o];function d(i,s,p,_,c,h){return n(),e("div",null,l)}var k=t(a,[["render",d]]);export{m as __pageData,k as default};

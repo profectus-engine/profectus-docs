@@ -1,0 +1,1 @@
+import{_ as t,c as e,o,a}from"./app.e5a3543f.js";const x='{"title":"Component: Context","description":"","frontmatter":{},"headers":[{"level":2,"title":"Slots","slug":"slots"}],"relativePath":"api/components/ContextComponent.md"}',n={},r=a("",3),s=[r];function d(l,c,_,i,h,p){return o(),e("div",null,s)}var f=t(n,[["render",d]]);export{x as __pageData,f as default};

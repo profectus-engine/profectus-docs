@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a,a as o}from"./app.e5a3543f.js";const f='{"title":"Component: Tab","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/features/tabs/TabComponent.md"}',r={},n=o("",3),s=[n];function p(d,l,i,_,c,h){return a(),e("div",null,s)}var m=t(r,[["render",p]]);export{f as __pageData,m as default};

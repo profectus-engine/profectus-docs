@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as a,a as r}from"./app.e5a3543f.js";const x='{"title":"Component: Spacer","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/components/layout/SpacerComponent.md"}',o={},n=r("",3),l=[n];function s(p,d,i,c,h,_){return a(),e("div",null,l)}var g=t(o,[["render",s]]);export{x as __pageData,g as default};

@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as r,a}from"./app.8e8712eb.js";const f='{"title":"Example Projects","description":"","frontmatter":{},"headers":[{"level":2,"title":"TMT-Demo","slug":"tmt-demo"}],"relativePath":"guide/examples.md"}',o={},s=a("",4),n=[s];function c(p,i,d,_,l,m){return r(),t("div",null,n)}var u=e(o,[["render",c]]);export{f as __pageData,u as default};

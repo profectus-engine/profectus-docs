@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,a as s}from"./app.8e8712eb.js";const y='{"title":"Persistence","description":"","frontmatter":{},"headers":[],"relativePath":"guide/persistence.md"}',r={},n=s("",6),i=[n];function o(l,c,h,d,u,p){return a(),t("div",null,i)}var m=e(r,[["render",o]]);export{y as __pageData,m as default};
