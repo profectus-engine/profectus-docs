@@ -1,6 +1,6 @@
 # Layers
 
-Profectus content is organized into units called "Layers". When display content to the user, it will be done so by having some number of layers appearing as sections on the screen. They are stored in `/src/data/layers`.
+Profectus content is organized into units called "Layers". When displaying content to the user, the screen will be divided into several tabs that each display the content of a layer. These layers are stored in `/src/data/layers`.
 
 Each layer is ultimately a collection of different features, and a display function. While there are a couple reserved properties for layers, most of its structure is fully up to the creator. 
 
