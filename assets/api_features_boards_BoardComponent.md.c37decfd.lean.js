@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as r,a as l}from"./app.7cfe4cf0.js";const g='{"title":"Component: Board","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/features/boards/BoardComponent.md"}',d={},a=l("",3),s=[a];function p(o,n,i,f,c,y){return r(),e("div",null,s)}var _=t(d,[["render",p]]);export{g as __pageData,_ as default};

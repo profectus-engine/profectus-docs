@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as r,a}from"./app.e5a3543f.js";const y='{"title":"Component: Tree","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/features/trees/TreeComponent.md"}',o={},p=a("",3),s=[p];function d(l,n,i,c,_,h){return r(),t("div",null,s)}var T=e(o,[["render",d]]);export{y as __pageData,T as default};

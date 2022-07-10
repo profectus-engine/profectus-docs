@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,a as o}from"./app.e5a3543f.js";const f='{"title":"Reactivity","description":"","frontmatter":{},"headers":[{"level":2,"title":"Computable","slug":"computable"}],"relativePath":"guide/reactivity.md"}',r={},s=o("",7),i=[s];function n(u,c,d,l,h,p){return a(),t("div",null,i)}var y=e(r,[["render",n]]);export{f as __pageData,y as default};
