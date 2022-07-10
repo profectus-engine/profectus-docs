@@ -35,7 +35,12 @@ Once the action completes, your project should be available at `https://<YOUR_GI
 
 ### Visual Studio Code Setup
 
-If you don't already have a preferred IDE, Profectus is currently developed in [Visual Studio Code](https://code.visualstudio.com) and is known to work well with that IDE in particular. It's recommend to use [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471) for proper type analysis, and consider turning off `.value` autocomplete by running the `Preferences: Open Settings` command and setting `volar.autoCompleteRefs` to `false`.
+If you don't already have a preferred IDE, Profectus is currently developed in [Visual Studio Code](https://code.visualstudio.com) and is known to work well with that IDE in particular.
+
+Recommendations:
+- Use [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471) for proper type analysis
+- Turn off `.value` autocomplete by running the `Preferences: Open Settings` command and setting `volar.autoCompleteRefs` to `false`
+- Install the [Vitest VS Code extension](https://marketplace.visualstudio.com/items?itemName=ZixuanChen.vitest-explorer&ssr=false#qna) for running and debugging unit tests (if you plan on working on the engine itself)
 
 ## Replit
 
