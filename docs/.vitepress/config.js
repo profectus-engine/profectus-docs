@@ -15,25 +15,29 @@ module.exports = {
     ['meta', { name: 'og:description', content: 'A game engine that grows with you' }],
     ['meta', { name: 'og:image', content: '/Logo.png' }]
   ],
+  lastUpdated: true,
+  appearance: false,
   themeConfig: {
-    repo: 'profectus-engine/profectus-docs',
-    docsDir: 'docs',
-    docsBranch: 'main',
-    editLinks: true,
-    editLinkText: 'Edit this page on GitHub',
-    lastUpdated: 'Last Updated',
+    logo: "/favicon.svg",
+    editLink: {
+      pattern: "https://github.com/profectus-engine/profectus-docs/edit/main/docs/:path",
+      editLinkText: "Edit this page on GitHub"
+    },
     nav: [
       { text: "Guide", link: "/guide/", activeMatch: "^/guide/" },
       { text: "API", link: "/api/", activeMatch: "^/api/" },
-      { text: "Forums", link: "https://forums.moddingtree.com" },
-      { text: "Discord", link: "https://discord.gg/F3xveHV" },
-      { text: "Github", link: "https://github.com/profectus-engine/Profectus" }
+      { text: "Forums", link: "https://forums.moddingtree.com" }
+    ],
+    socialLinks: [
+      { icon: "discord", link: "https://discord.gg/F3xveHV" },
+      { icon: "github", link: "https://github.com/profectus-engine/Profectus" }
     ],
     sidebar: {
       "/guide/": [
         {
           text: "Getting Started",
-          children: [
+          collapsible: true,
+          items: [
             { text: "Introduction", link: "/guide/" },
             { text: "Setting Up", link: "/guide/setup" },
             { text: "Updating Profectus", link: "/guide/updating" },
@@ -42,7 +46,8 @@ module.exports = {
         },
         {
           text: "Creating Your Project",
-          children: [
+          collapsible: true,
+          items: [
             { text: "Project Info", link: "/guide/project-info" },
             { text: "Project Entry", link: "/guide/project-entry" },
             { text: "Changelog", link: "/guide/changelog" },
@@ -52,7 +57,8 @@ module.exports = {
         },
         {
           text: "Important Concepts",
-          children: [
+          collapsible: true,
+          items: [
             { text: "Layers", link: "/guide/layers" },
             { text: "Features", link: "/guide/features" },
             { text: "Coercable Components", link: "/guide/coercable" },
@@ -62,7 +68,8 @@ module.exports = {
         },
         {
           text: "Advanced Concepts",
-          children: [
+          collapsible: true,
+          items: [
             { text: "Creating Features", link: "/guide/creating-features" },
             { text: "Dynamic Layers", link: "/guide/dynamic-layers" }
           ]
@@ -76,22 +83,21 @@ module.exports = {
 function generateAPISidebar() {
   const sidebar = [];
 
-  console.log(path.resolve("./docs/api/modules"))
   const modules = fs.readdirSync("./docs/api/modules");
   modules.forEach(file => {
-    const moduleSidebar = { text: camelToTitle(file), children: [] };
+    const moduleSidebar = { text: camelToTitle(file), collapsible: true, items: [], collapsed: file === "lib" };
     sidebar.push(moduleSidebar)
-    walk(path.join("./docs/api/modules", file), moduleSidebar.children);
+    walk(path.join("./docs/api/modules", file), moduleSidebar.items);
   });
 
   const componentFolders = [];
   walk("./docs/api/components", componentFolders);
   sidebar.unshift({
     text: "Components",
-    children: componentFolders
+    collapsible: true,
+    collapsed: true,
+    items: componentFolders
   });
-
-  walk("./docs/api/features", sidebar.find(item => item.text === "Features").children);
 
   sort(sidebar);
 
@@ -99,11 +105,11 @@ function generateAPISidebar() {
 }
 
 function sort(sidebar) {
-  sidebar.filter(sidebar => !!sidebar.children).forEach(item => sort(item.children));
+  sidebar.filter(sidebar => !!sidebar.items).forEach(item => sort(item.items));
   sidebar.sort((a, b) => {
-    if (a.children && !b.children) {
+    if (a.items && !b.items) {
       return -1;
-    } else if (!a.children && b.children) {
+    } else if (!a.items && b.items) {
       return 1;
     } else if (a.text > b.text) {
       return 1;
@@ -121,16 +127,8 @@ function walk(dir, sidebar) {
     const resolvedFile = path.join(dir, file);
     const stat = fs.statSync(resolvedFile);
     if (stat.isDirectory()) {
-      let folder = sidebar.find(item => item.text === camelToTitle(file));
-      if (!folder) {
-        folder = {
-          text: camelToTitle(file),
-          children: []
-        };
-        sidebar.push(folder);
-      }
-      walk(resolvedFile, folder.children);
-    } else {
+      walk(resolvedFile, sidebar);
+    } else if (!file.includes("Component") || dir.includes("components")) {
       sidebar.push({ text: camelToTitle(file.substr(0, file.length - 3)), link: "/" + resolvedFile.substr(5, resolvedFile.length - 8).replace(/\\/g, "/") + ".html" });
     }
   });

@@ -1,6 +1,11 @@
-/* Hide Github button that goes to profectus-docs */
-.nav-links > .item:last-child {
-	display: none;
+body {
+    font-size: 14px;
+}
+
+@media (min-width: 960px) {
+    .name, .text {
+        font-size: 52px !important;
+    }
 }
 
 .custom-block.info {
@@ -11,29 +16,31 @@
 	background-color: #EBCB8B;
 }
 
-tr:nth-child(2n) {
-    background-color: var(--code-bg-color);
+.vp-doc tr:nth-child(2n),
+.vp-doc th {
+    background-color: var(--vp-c-bg-alt);
 }
 
-.sidebar > .sidebar-links > .sidebar-link > .sidebar-links > .sidebar-link > .sidebar-links > .sidebar-link > .sidebar-links > .sidebar-link > .sidebar-links > .sidebar-link > .sidebar-link-item {
-    display: block;
-    padding: 0.3rem 1.5rem 0.3rem 5rem;
-    line-height: 1.4;
-    font-size: 0.9rem;
-    font-weight: 400;
+.vp-doc th,
+.vp-doc td {
+    border: 1px solid var(--vp-c-divider-light);
 }
 
-p.sidebar-link-item {
-    color: var(--c-text-lighter);
+.vp-doc h1:first-child {
+    position: sticky;
+    top: 16px;
+    z-index: 20;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
-pre {
-    display: inline-block;
-    margin: 0;
-    border-radius: 3px;
-    padding: 0.25rem 0.5rem;
-    font-family: var(--code-font-family);
-    font-size: 0.85em;
-    color: var(--c-text-light);
-    background-color: var(--code-inline-bg-color);
+.content,
+.VPNav.no-sidebar {
+    background: var(--vp-c-bg) !important;
+}
+
+.vp-doc :not(pre) > code {
+    color: var(--vp-c-text-light-1);
+    background-color: var(--vp-code-block-bg);
 }

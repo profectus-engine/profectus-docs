@@ -1,11 +1,27 @@
 :root {
-  --c-white: #2E3440;
-  --c-white-dark: #3B4252;
-  --c-text-light-1: #D8DEE9;
-  --c-text-light-2: #E5E9F0;
-  --c-text-light-3: #ECEFF4;
-  --c-brand: #5E81AC;
-  --c-brand-light: #88C0D0;
-  --code-inline-bg-color:  #3B4252;
-  --font-family-base: Roboto Mono,monospace;
+  --vp-c-bg: #2E3440;
+  --vp-c-bg-alt: #3B4252;
+  --vp-code-block-bg: #434C5E;
+  --vp-c-text-light-1: #D8DEE9;
+  --vp-c-text-light-2: #E5E9F0;
+  --vp-c-text-light-3: #ECEFF4;
+  --vp-c-text-dark-1: #2E3440;
+  --vp-c-divider-light: #4C566A;
+  --vp-c-brand: #5E81AC;
+  --vp-c-brand-light: #81A1C1;
+  --vp-button-brand-border: #81A1C1;
+  --vp-button-brand-text: #ECEFF4;
+  --vp-button-brand-hover-text: #ECEFF4;
+  --vp-button-brand-active-text: #ECEFF4;
+  --vp-button-alt-text: #ECEFF4;
+  --vp-button-alt-bg: #3B4252;
+  --vp-button-alt-border: #4C566A;
+  --vp-code-inline-bg-color:  #3B4252;
+  --vp-c-gray-light-1: #2E3440;
+  --vp-c-gray-light-2: #3B4252;
+  --vp-c-gray-light-3: #434C5E;
+  --vp-c-gray-light-4: #4C566A;
+  --vp-c-bg-soft: #3B4252;
+  --vp-font-family-base: Roboto Mono, monospace;
+  --vp-font-family-mono: Roboto Mono, monospace;
 }

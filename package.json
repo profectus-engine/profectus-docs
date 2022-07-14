@@ -7,7 +7,7 @@
     "serve": "vitepress serve docs",
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "generate": "tsc --project ./profectus-theme && vue-docgen -c docgen.config.js && cd profectus && vue-typedoc --logLevel Verbose --plugin ../typedoc-theme/index.js --theme profectus --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links && cd .. && rm docs/api/modules/main.md && node copyComponents.js"
+    "generate": "tsc --project ./profectus-theme && vue-docgen -c docgen.config.js && cd profectus && vue-typedoc --logLevel Verbose --plugin ../typedoc-theme/index.js --theme profectus --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links && cd .. && rm docs/api/modules/main.md && node postProcess.js"
   },
   "repository": "git+https://github.com/profectus-engine/profectus-docs.git",
   "author": "thepaperpilot",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/profectus-engine/profectus-docs#readme",
   "dependencies": {
-    "vitepress": "^0.22.3"
+    "vitepress": "^1.0.0-alpha.4"
   },
   "private": true,
   "devDependencies": {

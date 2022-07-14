@@ -34,4 +34,4 @@ While absolute purity is impossible, design decisions have been and will continu
 - An engine should be efficient
 - An engine should report issues early and thoroughly
 - Passing by reference is one honking great idea -- [let's do more of that](https://www.python.org/dev/peps/pep-0020/)!
-	- [Refs are better than reactive objects](https://dev.to/ycmjason/thought-on-vue-3-composition-api-reactive-considered-harmful-j8c)
+	- See [Refs are better than reactive objects](https://dev.to/ycmjason/thought-on-vue-3-composition-api-reactive-considered-harmful-j8c)
