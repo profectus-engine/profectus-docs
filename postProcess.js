@@ -42,6 +42,11 @@ walk("./components", (dir, file, resolve) => {
     walk("./docs/api", function addFrontmatter(dir, file, resolve) {
         if (path.extname(file) !== ".md") return;
         const filePath = path.resolve(dir, file);
+        if (dir.endsWith("interfaces")) {
+            fs.unlinkSync(filePath);
+            resolve();
+            return;
+        }
         const data = fs.readFileSync(filePath).toString();
         const fd = fs.openSync(filePath, "w+");
         fs.writeSync(fd, frontmatter);
