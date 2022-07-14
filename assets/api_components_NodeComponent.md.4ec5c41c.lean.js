@@ -1,1 +1,0 @@
-import{_ as e,c as t,o,a}from"./app.7cfe4cf0.js";const f='{"title":"Component: Node","description":"","frontmatter":{},"headers":[{"level":2,"title":"Props","slug":"props"}],"relativePath":"api/components/NodeComponent.md"}',n={},r=a("",3),d=[r];function s(p,i,l,_,c,h){return o(),t("div",null,d)}var x=e(n,[["render",s]]);export{f as __pageData,x as default};

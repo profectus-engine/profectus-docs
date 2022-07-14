@@ -1,1 +1,0 @@
-import{_ as t,c as e,o,a}from"./app.7cfe4cf0.js";const f='{"title":"Component: Floor","description":"","frontmatter":{},"headers":[{"level":2,"title":"Slots","slug":"slots"}],"relativePath":"api/components/math/FloorComponent.md"}',r={},n=a("",3),s=[n];function l(d,_,c,i,h,p){return o(),e("div",null,s)}var u=t(r,[["render",l]]);export{f as __pageData,u as default};

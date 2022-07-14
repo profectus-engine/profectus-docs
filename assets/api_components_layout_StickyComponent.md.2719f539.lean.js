@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as a,a as o}from"./app.7cfe4cf0.js";const f='{"title":"Component: Sticky","description":"","frontmatter":{},"headers":[{"level":2,"title":"Slots","slug":"slots"}],"relativePath":"api/components/layout/StickyComponent.md"}',n={},s=o("",3),r=[s];function c(i,l,d,_,h,p){return a(),e("div",null,r)}var y=t(n,[["render",c]]);export{f as __pageData,y as default};

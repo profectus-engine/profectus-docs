@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as a,a as o}from"./app.7cfe4cf0.js";const f='{"title":"Component: Sqrt","description":"","frontmatter":{},"headers":[{"level":2,"title":"Slots","slug":"slots"}],"relativePath":"api/components/math/SqrtComponent.md"}',r={},n=o("",3),s=[n];function d(l,_,c,i,h,p){return a(),e("div",null,s)}var S=t(r,[["render",d]]);export{f as __pageData,S as default};
