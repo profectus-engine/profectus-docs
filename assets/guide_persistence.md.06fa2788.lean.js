@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a,a as s}from"./app.189352af.js";const m=JSON.parse('{"title":"Persistence","description":"","frontmatter":{},"headers":[],"relativePath":"guide/persistence.md","lastUpdated":1657804868000}'),r={name:"guide/persistence.md"},n=s("",6),i=[n];function o(l,c,h,d,u,p){return a(),t("div",null,i)}var y=e(r,[["render",o]]);export{m as __pageData,y as default};
