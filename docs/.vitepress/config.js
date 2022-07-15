@@ -25,7 +25,7 @@ module.exports = {
     },
     nav: [
       { text: "Guide", link: "/guide/", activeMatch: "^/guide/" },
-      { text: "API", link: "/api/", activeMatch: "^/api/" },
+      { text: "API", link: "/api/overview", activeMatch: "^/api/" },
       { text: "Forums", link: "https://forums.moddingtree.com" }
     ],
     socialLinks: [

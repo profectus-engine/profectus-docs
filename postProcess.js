@@ -14,32 +14,35 @@ function walk(dir, cb) {
     }));
 }
 
-walk("./components", (dir, file, resolve) => {
-    const relPath = path.relative("./components", dir);
-    let dest = path.resolve("./docs/api", relPath);
-    if (relPath.includes("features")) {
-        dest = path.resolve("./docs/api/modules", relPath);
-    }
-    const filePath = path.resolve(dir, file);
-    const stream = fs.createReadStream(filePath);
-    let lineCount = 0;
-    stream.on("data", buffer => {
-        let idx = -1;
-        lineCount--; // Because the loop will run once for idx=-1
-        do {
-            idx = buffer.indexOf(10, idx + 1);
-            lineCount++;
-        } while (idx !== -1);
-        if (lineCount > 4) {
-            stream.destroy();
-            fs.mkdirSync(dest, { recursive: true });
-            fs.copyFileSync(filePath, path.resolve(dest, path.basename(file)));
+(async () => {
+    fs.copyFileSync("./overview.md", "./docs/api/overview.md");
+    fs.unlinkSync("./docs/api/index.md");
+    await walk("./components", (dir, file, resolve) => {
+        const relPath = path.relative("./components", dir);
+        let dest = path.resolve("./docs/api", relPath);
+        if (relPath.includes("features")) {
+            dest = path.resolve("./docs/api/modules", relPath);
         }
-        resolve();
+        const filePath = path.resolve(dir, file);
+        const stream = fs.createReadStream(filePath);
+        let lineCount = 0;
+        stream.on("data", buffer => {
+            let idx = -1;
+            lineCount--; // Because the loop will run once for idx=-1
+            do {
+                idx = buffer.indexOf(10, idx + 1);
+                lineCount++;
+            } while (idx !== -1);
+            if (lineCount > 4) {
+                stream.destroy();
+                fs.mkdirSync(dest, { recursive: true });
+                fs.copyFileSync(filePath, path.resolve(dest, path.basename(file)));
+            }
+            resolve();
+        });
     });
-}).then(() => {
     const frontmatter = Buffer.from("---\neditLink: false\n---\n");
-    walk("./docs/api", function addFrontmatter(dir, file, resolve) {
+    await walk("./docs/api", function addFrontmatter(dir, file, resolve) {
         if (path.extname(file) !== ".md") return;
         const filePath = path.resolve(dir, file);
         if (dir.endsWith("interfaces")) {
@@ -67,4 +70,4 @@ walk("./components", (dir, file, resolve) => {
         fs.closeSync(fd);
         resolve();
     });
-});
+})();

@@ -26,18 +26,13 @@ body {
     border: 1px solid var(--vp-c-divider-light);
 }
 
-.vp-doc h1:first-child {
-    position: sticky;
-    top: 16px;
-    z-index: 20;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
 .content,
 .VPNav.no-sidebar {
     background: var(--vp-c-bg) !important;
+}
+
+.VPNavBar {
+    border-bottom: 0 !important;
 }
 
 .vp-doc :not(pre) > code {

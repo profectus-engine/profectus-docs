@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <template #home-hero-before>
-      <Profectus v-if="showLogo" style="height: 30vmin; margin: auto; display: block" />
+      <Profectus v-if="showLogo" style="height: 30vmin; margin: auto; display: block; margin-top: 10px;" />
       <div v-else style="height: 30vmin; margin: auto; display: block" />
     </template>
   </Layout>
