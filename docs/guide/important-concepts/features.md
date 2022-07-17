@@ -17,7 +17,7 @@ const addGainUpgrade = createUpgrade(() => ({
 
 The result will be a [lazy proxy](./layers#lazy-proxies) of the feature being created. The feature can then be used throughout the rest of the layer. The main thing to keep in mind when creating features is that they should typically be included in the layer object that gets returned. If a feature has any [persistent refs](./reactivity#persistent) they must be included or else they will not have their values saved and loaded correctly.
 
-While the structure of layers is intentionally left up to the creator, it is recommended to avoid storing them in arrays. If you ever remove an upgrade from an array, or add an upgrade in between others, then it will interfere with the save data of existing users. You can manually fix these issues in [fixOldSave](./project-entry.md#fixoldsave), but it's recommended to avoid the error entirely.
+While the structure of layers is intentionally left up to the creator, it is recommended to avoid storing them in arrays. If you ever remove an upgrade from an array, or add an upgrade in between others, then it will interfere with the save data of existing users. You can manually fix these issues in [fixOldSave](../creating-your-project/project-entry.md#fixoldsave), but it's recommended to avoid the error entirely.
 
 Since usually you want to access a specific feature, storing them in an object is much more reliable and makes the code easier to read. For things like checking number of upgrades bought, for example, you can still use `Object.values` to get an array of the objects instead.
 

@@ -2,7 +2,7 @@
 
 Profectus takes large advantage of Vue's reactivity system. It's recommended to read up on how [refs](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#reactive-variables-with-ref) and [computed](https://vuejs.org/guide/essentials/computed.html) refs work. Ultimately this means that sometimes you'll need to type `.value` to get the actual value of something, but also you are able to pass things around by reference instead of by value. Indeed, it is recommended to only unwrap the actual value when you actually need it. `.value` is guaranteed to be correct and up to date only on the exact moment it is accessed.
 
-With a proper IDE, such as [Visual Studio Code](./setup#visual-studio-code-setup), you should be able to see whether or not something is a ref or not from type hints. If in doubt, you can always wrap the property in an `unref` call.
+With a proper IDE, such as [Visual Studio Code](../getting-started/setup#visual-studio-code-setup), you should be able to see whether or not something is a ref or not from type hints. If in doubt, you can always wrap the property in an `unref` call.
 
 Vue's reactivity is probably the "quirkiest" part of Profectus, and not even the documentation makes all of those quirks clear. It is recommend to read [this thread](https://github.com/vuejs/docs/issues/849) of common misconceptions around Vue reactivity.
 
