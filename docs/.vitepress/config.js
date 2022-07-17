@@ -39,39 +39,39 @@ module.exports = {
           collapsible: true,
           items: [
             { text: "Introduction", link: "/guide/" },
-            { text: "Setting Up", link: "/guide/setup" },
-            { text: "Updating Profectus", link: "/guide/updating" },
-            { text: "Example Projects", link: "/guide/examples" }
+            { text: "Setting Up", link: "/guide/getting-started/setup" },
+            { text: "Updating Profectus", link: "/guide/getting-started/updating" },
+            { text: "Example Projects", link: "/guide/getting-started/examples" }
           ]
         },
         {
           text: "Creating Your Project",
           collapsible: true,
           items: [
-            { text: "Project Info", link: "/guide/project-info" },
-            { text: "Project Entry", link: "/guide/project-entry" },
-            { text: "Changelog", link: "/guide/changelog" },
-            { text: "Themes", link: "/guide/themes" },
-            { text: "Utilities", link: "/guide/utils" }
+            { text: "Project Info", link: "/guide/creating-your-project/project-info" },
+            { text: "Project Entry", link: "/guide/creating-your-project/project-entry" },
+            { text: "Changelog", link: "/guide/creating-your-project/changelog" },
+            { text: "Themes", link: "/guide/creating-your-project/themes" },
+            { text: "Utilities", link: "/guide/creating-your-project/utils" }
           ]
         },
         {
           text: "Important Concepts",
           collapsible: true,
           items: [
-            { text: "Layers", link: "/guide/layers" },
-            { text: "Features", link: "/guide/features" },
-            { text: "Coercable Components", link: "/guide/coercable" },
-            { text: "Reactivity", link: "/guide/reactivity" },
-            { text: "Persistence", link: "/guide/persistence" }
+            { text: "Layers", link: "/guide/important-concepts/layers" },
+            { text: "Features", link: "/guide/important-concepts/features" },
+            { text: "Coercable Components", link: "/guide/important-concepts/coercable" },
+            { text: "Reactivity", link: "/guide/important-concepts/reactivity" },
+            { text: "Persistence", link: "/guide/important-concepts/persistence" }
           ]
         },
         {
           text: "Advanced Concepts",
           collapsible: true,
           items: [
-            { text: "Creating Features", link: "/guide/creating-features" },
-            { text: "Dynamic Layers", link: "/guide/dynamic-layers" }
+            { text: "Creating Features", link: "/guide/advanced-concepts/creating-features" },
+            { text: "Dynamic Layers", link: "/guide/advanced-concepts/dynamic-layers" }
           ]
         }
       ],
