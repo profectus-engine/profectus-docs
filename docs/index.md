@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/setup
+      link: /guide/getting-started/setup
     - theme: alt
       text: Learn More
       link: /guide/

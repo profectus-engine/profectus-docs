@@ -67,6 +67,13 @@ module.exports = {
           ]
         },
         {
+          text: "Recipes",
+          collapsible: true,
+          items: [
+            { text: "Display Save Progress", link: "/guide/recipes/save-progress" }
+          ]
+        },
+        {
           text: "Advanced Concepts",
           collapsible: true,
           items: [
