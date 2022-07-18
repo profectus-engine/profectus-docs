@@ -12,7 +12,7 @@ You will require the following tools for local development:
 Create a new project from the [Profectus repository](https://github.com/profectus-engine/Profectus) via the "Use this template" button. You can then copy the link for the repository to clone it locally.
 
 ::: info
-Since the repository is a template repository, you can easily create multiple projects from one repository. However, it does make updating an existing project to a newer version of Profectus more difficult.
+Since the repository is a template repository, you can easily create multiple projects from one repository. However, it does make updating an existing project to a newer version of Profectus more difficult. Consider [updating Profectus](./updating.md) _before_ you start developing, to avoid the issue with unrelated histories.
 :::
 
 It's recommended to create a new git branch for development, so you can push your changes without it affecting the live build. This allows you to continue working with smaller commits, and only release new versions when you're actually ready to. The github workflow will automatically rebuild the page whenever you push to the `main` branch.
