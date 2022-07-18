@@ -4,11 +4,11 @@ This is a recipe to add a section to each save in the Saves Manager that will de
 
 ![save progress display](./save-progress.png)
 
-This recipe only requires modifying the `Save.vue` file within your project. You'll notice it has quite a bit going on, but all we need to focus on is adding a new coerced component for the progress display, and adding it to the template.
+This recipe will involve modifying the `Save.vue` file within your project to include an extra component in the saves details. It will go over creating the new component, how to work with the save data object, and then displaying the component.
 
 ## Creating the component
 
-Let's start with creating the coerced component. For this recipe we're going to make a couple assumptions about what this display should be. We'll assume the text will be more complex than just displaying a single value. That is, at different stages of the game progress will be indicated by different metrics. We'll also assume it will be a single line of descriptive text - no images or anything else that would justify making a new .vue component. Breaking these assumptions is left as an exercise for the reader. But for now, with those assumptions in mind, we'll write our component (in the `<script>` tag in `Save.vue`) similar to this example:
+Let's start with creating the coerced component. For this recipe we're going to make a couple assumptions about what this display should be. We'll assume the text will be more complex than displaying a single value. That is, at different stages of the game progress will be indicated by different metrics. We'll also assume it will be a single line of descriptive text - no images or anything else that would justify making a new .vue component. Breaking these assumptions is left as an exercise for the reader. But for now, with those assumptions in mind, we'll write our component (in the `<script>` tag in `Save.vue`) similar to this example:
 
 ```ts
 const progressDisplay = computeComponent(
@@ -41,14 +41,18 @@ if ((save.value?.layers?.main as LayerData<typeof main> | undefined)?.nextSectio
 
 ## Displaying the component
 
-The template is a fairly large one, but fortunately we don't need to care about most of it, which has to deal with the various actions the player can perform. We just want to display a new component when the save is not in editing mode.
-
-Look for the section of the template, near the bottom, that looks like `<div class="details" v-if="save.error == undefined && !isEditing">`. This is where any details about a save should go. Note that there are _two_ divs with this CSS class, and we specifically want the one that's active when isEditing is `false`.
-
-Now just add the code to render the component in a new div:
+The `Save.vue` template contains, amongst other things, an element that displays the details of the save. We'll be adding a new child within this element. You'll want to look near the bottom of the template for the element that looks like `<div class="details" v-if="save.error == undefined && !isEditing">`. Note that there are _two_ divs with this CSS class, and we specifically want the one that's active when isEditing is `false`. You'll then want to add our new element inside this div, like so:
 
 ```html
-<div v-if="progressDisplay"><component :is="progressDisplay" /></div>
+<div class="details" v-if="save.error == undefined && !isEditing">
+    <button class="button open" @click="emit('open')">
+        <h3>{{ save.name }}</h3>
+    </button>
+    <span class="save-version">v{{ save.modVersion }}</span
+    ><br />
+    <div v-if="currentTime">Last played {{ dateFormat.format(currentTime) }}</div>
+++  <div v-if="progressDisplay"><component :is="progressDisplay" /></div>
+</div>
 ```
 
 And there you have it! Your dev environment should now show the component in all its glory in the saves manager.
