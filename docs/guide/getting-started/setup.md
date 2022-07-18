@@ -21,6 +21,8 @@ The next step is to install Profectus' dependencies. This is as simple as runnin
 
 You can now run `npm run serve` to start a local server that will host your project so you can work on it. As you change files the site will automatically reload them.
 
+Also, you might consider following the steps to [update Profectus](./updating.md) before you start working, as it'll make updating in the future easier without needing to worry about unrelated histories.
+
 ### Deploying
 
 If you're using git, deploying is as easy as pushing your changes to the `main` branch. In a couple minutes the site will be updated fully automatically. If you'd like to see progress on it, or look at any errors that happened, you can do so from the actions tab on your repository.
