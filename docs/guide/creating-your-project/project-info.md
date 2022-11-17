@@ -11,7 +11,14 @@ It is stored at `/src/data/projInfo.json`.
 - Type: `string`
 - Default: `Profectus`
 
-The name of the project, which will appear in the info tab and in the header, if enabled. The page title will also be set to this value.
+The name of the project, which will appear in the info tab and the header, if enabled. The page title will also be set to this value.
+
+### description
+
+- Type: `string`
+- Default: `A project made in Profectus`
+
+A description of the project, which will be used when the project is installed as a Progressive Web Application.
 
 ### id
 
@@ -21,7 +28,7 @@ The name of the project, which will appear in the info tab and in the header, if
 This is a unique ID used when saving player data. Changing this will effectively erase all save data for all players.
 
 ::: warning
-This ID MUST be unique to your project, and should not be left as the default value. Otherwise your project may use the save data from another project and cause issues for both projects.
+This ID MUST be unique to your project, and should not be left as the default value. Otherwise, your project may use the save data from another project and cause issues for both projects.
 :::
 
 ### author
@@ -36,7 +43,7 @@ The author of the project, which will appear in the info tab.
 - Type: `string`
 - Default: `The Paper Pilot Community`
 
-The text to display for the discord server to point user's to. This will appear when hovering over the discord icon, inside the info tab, the game over screen, as well as the NaN detected screen.
+The text to display for the discord server to point users to. This will appear when hovering over the discord icon, inside the info tab, the game over screen, as well as the NaN detected screen.
 
 By default, this is The Paper Pilot Community, which can act as a catch-all for any Profectus projects without their own servers. If you change the discord server with your own, The Paper Pilot Community will still display underneath the custom server when hovering over the discord icon and within the info tab. Those places will also contain a link to the Modding Tree discord server.
 
@@ -45,7 +52,7 @@ By default, this is The Paper Pilot Community, which can act as a catch-all for 
 - Type: `string`
 - Default: `https://discord.gg/WzejVAx`
 
-The link for the discord server to point user's to. See [discordName](#discordname) for more details.
+The link for the discord server to point users to. See [discordName](#discordname) for more details.
 
 ## Version Config
 
@@ -61,7 +68,7 @@ The current version of the project loaded. If the player data was last saved in 
 - Type: `string`
 - Default: `Initial Commit`
 
-The display name for the current version of the project loaded. This will also appear in the nav, the info tab, and the game over screen, unless set to an empty string.
+The display name for the current version of the project loaded. This will also appear in the nav, the info tab, and the game over screen unless set to an empty string.
 
 ## Display Config
 
@@ -136,3 +143,10 @@ The max amount of time that can be stored as offline time, in hours.
 - Default: `true`
 
 Whether or not to allow the player to pause the game. Turning this off disables the toggle from the options menu as well as the NaN screen. Developers can still manually pause by just running `player.devSpeed = 0` in console (or `= 1` to resume).
+
+### exportEncoding
+
+- Type: `base64 | lz | plain`
+- Default: `base64`
+
+The encoding to use when exporting to the clipboard. Plain-text is fast to generate but is easiest for the player to manipulate and cheat with. Base 64 is slightly slower and the string will be longer but will offer a small barrier to people trying to cheat. LZ-String is the slowest method, but produces the smallest strings and still offers a small barrier to those trying to cheat. Some sharing platforms like pastebin may automatically delete base64 encoded text, and some sites might not support all the characters used in lz-string exports.

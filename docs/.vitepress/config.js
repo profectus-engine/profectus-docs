@@ -17,6 +17,7 @@ module.exports = {
   ],
   lastUpdated: true,
   appearance: false,
+  cleanUrls: 'with-subfolders',
   themeConfig: {
     logo: "/favicon.svg",
     editLink: {
