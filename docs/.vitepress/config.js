@@ -37,7 +37,7 @@ module.exports = {
       "/guide/": [
         {
           text: "Getting Started",
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: "Introduction", link: "/guide/" },
             { text: "Setting Up", link: "/guide/getting-started/setup" },
@@ -47,7 +47,7 @@ module.exports = {
         },
         {
           text: "Creating Your Project",
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: "Project Info", link: "/guide/creating-your-project/project-info" },
             { text: "Project Entry", link: "/guide/creating-your-project/project-entry" },
@@ -58,7 +58,7 @@ module.exports = {
         },
         {
           text: "Important Concepts",
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: "Layers", link: "/guide/important-concepts/layers" },
             { text: "Features", link: "/guide/important-concepts/features" },
@@ -69,14 +69,14 @@ module.exports = {
         },
         {
           text: "Recipes",
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: "Display Save Progress", link: "/guide/recipes/save-progress" }
           ]
         },
         {
           text: "Advanced Concepts",
-          collapsible: true,
+          collapsed: false,
           items: [
             { text: "Creating Features", link: "/guide/advanced-concepts/creating-features" },
             { text: "Dynamic Layers", link: "/guide/advanced-concepts/dynamic-layers" }
@@ -93,7 +93,7 @@ function generateAPISidebar() {
 
   const modules = fs.readdirSync("./docs/api/modules");
   modules.forEach(file => {
-    const moduleSidebar = { text: camelToTitle(file), collapsible: true, items: [], collapsed: file === "lib" };
+    const moduleSidebar = { text: camelToTitle(file), items: [], collapsed: file === "lib" };
     sidebar.push(moduleSidebar)
     walk(path.join("./docs/api/modules", file), moduleSidebar.items);
   });
@@ -102,7 +102,6 @@ function generateAPISidebar() {
   walk("./docs/api/components", componentFolders);
   sidebar.unshift({
     text: "Components",
-    collapsible: true,
     collapsed: true,
     items: componentFolders
   });

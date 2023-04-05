@@ -18,7 +18,7 @@ export class ProfectusTheme extends MarkdownTheme {
     this.hideBreadcrumbs = true;
     this.hideInPageTOC = true;
 
-    registerTypeHelper();
+    // registerTypeHelper();
   }
 
 
