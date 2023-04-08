@@ -65,7 +65,8 @@ module.exports = {
             { text: "Features", link: "/guide/important-concepts/features" },
             { text: "Coercable Components", link: "/guide/important-concepts/coercable" },
             { text: "Reactivity", link: "/guide/important-concepts/reactivity" },
-            { text: "Persistence", link: "/guide/important-concepts/persistence" }
+            { text: "Persistence", link: "/guide/important-concepts/persistence" },
+            { text: "Formulas", link: "/guide/important-concepts/formulas" }
           ]
         },
         {
