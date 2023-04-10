@@ -1,8 +1,8 @@
 # Particles
 
-This is a more complete example from the Kronos example used in the [nodes](../advanced-concepts/nodes) docs. You will design a particle effect, make it appear on another feature, and make it adapt to the game state.
+This is a more comprehensive example based on the Kronos example used in the [nodes](../advanced-concepts/nodes) docs. You will design a particle effect, make it appear on another feature, and ensure it adapts to the game state.
 
-Let's start with designing the particle effect. Profectus uses pixi-particles, and there's an online particle effect editor for it [here](https://pixijs.io/pixi-particles-editor/). However, it will return an older format of the particle effect emitter options, so you'll need to convert it like so:
+First, design the particle effect. Profectus uses [pixi-particles](https://github.com/pixijs/particle-emitter), and you can use the online particle effect editor [here](http://pixijs.github.io/pixi-particles-editor/). However, the editor returns an older format of the particle effect emitter config, so you'll need to convert it like this:
 
 ```ts
 import myParticleEffect from "myParticleEffect.json";
@@ -11,7 +11,7 @@ import { upgradeConfig } from "@pixi/particle-emitter"
 const particleEffect = upgradeConfig(myParticleEffect);
 ```
 
-Next we need to create the particles feature and render it. We'll also want to track the bounding rect of the particle effects. We'll consider the next step:
+Next, create the particles feature and render it. You'll also want to track the bounding rect of the particle effects. Consider the following step:
 
 ```ts
 const particles = createParticles(() => ({
@@ -24,7 +24,7 @@ const particles = createParticles(() => ({
 }));
 ```
 
-You'll note this adds a bounding rect and updates it's based on the boundingRect set to non-null. The next step will be creating the emitter. Now we can pull in the Kronos example, which make a particle effect that appears when actualGain > 0.
+This code adds a bounding rect for the particles and updates it when the container is created or resizes. Now, create the emitter. Pull in the Kronos example, which displays a particle effect when `actualGain > 0`.
 
 ```ts
 const particlesEmitter = ref(particles.addEmitter(element.particlesConfig));
@@ -54,9 +54,9 @@ watch(
 )
 ```
 
-You'll note this checks regularly whether the boundingRect exists. If you ensure all the references to things are being watched, youy can make complex situations for various emitters.
+This code watches for whether the node exists and the `boundingRect` exists, which are required to display the effect. You can additionally watch any other values that would have an impact on the particle effect, like whether or not it should be emitting.
 
-If you're hot reloading, it may be required to re-load the particle effect. Here's example code from Kronos.
+If you're using hot reloading, you might need to reload the particle effect. Here's an example from Kronos:
 
 ```ts
 const refreshParticleEffect = () => {
