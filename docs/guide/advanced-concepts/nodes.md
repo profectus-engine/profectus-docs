@@ -1,7 +1,37 @@
 # Nodes
 
-Every feature that is rendered in the DOM should have a `Node` component within it, which registers itself to the closest `Context` component (typically within the`Layer`'s component) and tracks the bounding rect (both size and position) of the DOM element. You can then search for a feature's unique `id` property within `layer.nodes` to get access to the DOM element for that feature, if it currently exists.
+Features rendered in the DOM should include a `Node` component, which registers itself to the nearest `Context` component (usually within the `Layer`'s component) and tracks the bounding rect (both size and position) of the DOM element. Access the DOM element for a feature via its unique `id` property within `layer.nodes`, provided it currently exists.
 
-This can be used for features with more complex displays, such as particle effects positioned relative to another feature, or drawing links between different nodes.
+This is useful for features with complex displays, such as particle effects positioned relative to another feature or drawing links between different nodes. To illustrate this, let's look at a complete example of using `layer.nodes` to get a node's bounding rect and then placing a particle effect using it. Here's an example from Kronos:
 
-The bounding rect that will typically be kept up to date and react to things like nodes changing size, or moving because of the window resizing or feature's showing or hiding. However, there are ocassional situations where it may become out of sync, so it's recommended to only use the node system for visual effects, where any glitches will be relatively minor.
+```ts
+const particlesEmitter = ref(particles.addEmitter(element.particlesConfig));
+const updateParticleEffect = async ([shouldEmit, rect, boundingRect]: [
+    boolean,
+    DOMRect | undefined,
+    DOMRect | undefined
+]) => {
+    const emitter = await particlesEmitter.value;
+    emitter.emit = isGaining && rect != undefined && boundingRect != undefined;
+    if (emitter.emit && !emitter.destroyed) {
+        emitter.cleanup();
+        emitter.updateOwnerPos(
+            rect.x + rect.width / 2 - boundingRect.x,
+            rect.y + rect.height / 2 - boundingRect.y
+        );
+        emitter.resetPositionTracking();
+    }
+};
+watch(
+    [
+        () => Decimal.gt(actualGain.value, 0),
+        () => layer.nodes.value[name]?.rect,
+        particles.boundingRect
+    ],
+    updateParticleEffect
+)
+```
+
+In this example the particle effects will update whenever the window resizes, the feature's bounding rect changes, or the particle effect is supposed to turn on/off. By watching for other relevant properties you can ensure even more complex situations are accounted for.
+
+The bounding rect is usually kept up-to-date and responsive to changes such as nodes resizing, moving due to window resizing, or features being shown or hidden. However, occasional situations may cause it to be out of sync. Therefore, it's recommended to use the node system for visual effects only, where any glitches have minimal impact.

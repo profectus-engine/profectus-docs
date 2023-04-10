@@ -74,7 +74,8 @@ module.exports = {
           text: "Recipes",
           collapsed: false,
           items: [
-            { text: "Display Save Progress", link: "/guide/recipes/save-progress" }
+            { text: "Display Save Progress", link: "/guide/recipes/save-progress" },
+            { text: "Display Particle Effect", link: "/guide/recipes/particles" }
           ]
         },
         {

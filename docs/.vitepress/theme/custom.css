@@ -13,7 +13,16 @@ body {
 }
 
 .custom-block.warning {
-	background-color: #EBCB8B;
+	background-color: #3B4252;
+    border-color: #EBCB8B;
+}
+
+.custom-block.warning > .custom-block-title {
+    color: #EBCB8B;
+}
+
+.custom-block.warning > :not(.custom-block-title) {
+    color: var(--vp-custom-block-info-text);
 }
 
 .vp-doc tr:nth-child(2n),
