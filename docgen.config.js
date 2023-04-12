@@ -31,7 +31,7 @@ function component(renderedUsage, // props, events, methods and slots documentat
   { isSubComponent, hasSubComponents }) {
   const { displayName, description, docsBlocks } = doc
   return `
-  # Component: ${displayName}
+  ### ${displayName} Component
 
   ${description ? '> ' + description : ''}
 
@@ -50,7 +50,7 @@ const eventShouldDisplayCol = {
   [eventCols[2]]: event => event.properties?.length
 }
 const eventGetDisplay = {
-  [eventCols[0]]: event => `<pre>${clean(event.name)}</pre>`,
+  [eventCols[0]]: event => `<code>${clean(event.name)}</code>`,
   [eventCols[1]]: event => clean(event.description || ""),
   [eventCols[2]]: event => {
     if (!event.properties) return "";
@@ -59,12 +59,12 @@ const eventGetDisplay = {
       if (!type) {
         return ''
       }
-      return `**${name}** <pre>${clean(type.names.length ? type.names.join(', ') : '')}</pre> - ${description}`
+      return `**${name}** <code>${clean(type.names.length ? type.names.join(', ') : '')}</code> - ${description}`
     }).join('<br/>')
   }
 }
 
-const propCols = ["Name", "Types", "Description", "Values", "Default"];
+const propCols = ["Name", "Type", "Description", "Values", "Default"];
 const propShouldDisplayCol = {
   [propCols[0]]: pr => pr.name,
   [propCols[1]]: pr => pr.type?.name,
@@ -73,12 +73,12 @@ const propShouldDisplayCol = {
   [propCols[4]]: pr => pr.defaultValue
 }
 const propGetDisplay = {
-  [propCols[0]]: pr => `<pre>${clean(pr.name)}</pre>` + (pr.required ? "*" : ""),
+  [propCols[0]]: pr => `<code>${clean(pr.name)}</code>` + (pr.required ? "*" : ""),
   [propCols[1]]: pr => {
     let n = pr.type?.name ?? ''
     if (n === "union") n = pr.type?.elements.map(el => el.name).join(' | ')
     if (n === "Array") n = (pr.type?.elements.length > 1 ? "(" : "") + pr.type?.elements.map(el => el.name).join(' | ') + (pr.type?.elements.length > 1 ? ")" : "") + "[]"
-    return n ? '<pre>' + clean(n) + '</pre>' : ''
+    return n ? '<code>' + clean(n) + '</code>' : ''
   },
   [propCols[2]]: pr => clean((pr.description ?? '') + renderTags(pr.tags)),
   [propCols[3]]: pr => clean(pr.values?.map(pv => `\`${pv}\``).join(', ') ?? '-'),
@@ -92,7 +92,7 @@ const slotShouldDisplayCol = {
   [slotCols[2]]: slot => slot.bindings?.length
 }
 const slotGetDisplay = {
-  [slotCols[0]]: slot => `<pre>${clean(slot.name)}</pre>`,
+  [slotCols[0]]: slot => `<code>${clean(slot.name)}</code>`,
   [slotCols[1]]: slot => clean(slot.description || ""),
   [slotCols[2]]: slot => {
     if (!slot.bindings) return "";
@@ -101,11 +101,11 @@ const slotGetDisplay = {
       if (!type) {
         return ''
       }
-      return `**${name}** <pre>${
+      return `**${name}** <code>${
         type.name === 'union' && type.elements
           ? type.elements.map(({ name: insideName }) => insideName).join(', ')
           : type.name
-      }</pre> - ${description}`
+      }</code> - ${description}`
     }).join('<br/>')
   }
 }
@@ -114,7 +114,7 @@ function displayUsedCols(title, cols, shouldDisplayCol, getDisplay, rows, opt) {
   cols = cols.filter(col => rows.some(shouldDisplayCol[col]));
   if (!cols) return "";
 
-  let output = `\n${opt.isSubComponent || opt.hasSubComponents ? '#' : ''}## ${title}\n|`;
+  let output = `\n${opt.isSubComponent || opt.hasSubComponents ? '#' : ''}#### ${title}\n|`;
   cols.forEach(col => (output += ` ${col} |`));
   output += `\n|`;
   cols.forEach(col => (output += ' :-- |'));

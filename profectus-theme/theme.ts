@@ -1,14 +1,19 @@
 import * as fs from 'fs';
+import * as Handlebars from 'handlebars';
+import * as path from "path";
 
 import {
   ContainerReflection,
   PageEvent,
   Renderer,
   DeclarationReflection,
+  ReflectionKind,
   RendererEvent
 } from 'typedoc';
 import { MarkdownTheme } from 'typedoc-plugin-markdown';
 import registerTypeHelper from './type';
+
+const TEMPLATE_PATH = path.join(__dirname, '..', 'profectus-theme', 'resources', 'templates');
 
 export class ProfectusTheme extends MarkdownTheme {
   constructor(renderer: Renderer) {
@@ -21,14 +26,25 @@ export class ProfectusTheme extends MarkdownTheme {
     // registerTypeHelper();
   }
 
+  getReflectionMemberTemplate() {
+    const templ = super.getReflectionMemberTemplate();
+    return (pageEvent) => {
+      return templ(pageEvent);
+    }
+  }
 
   getReflectionTemplate() {
-    const templ = super.getReflectionTemplate();
     return (pageEvent) => {
       if (pageEvent.url === "index.md") {
         return "# Profectus API";
       }
-      return templ(pageEvent);
+      return Handlebars.compile(
+        fs.readFileSync(path.join(TEMPLATE_PATH, 'reflection.hbs')).toString(),
+      )(pageEvent, {
+        allowProtoMethodsByDefault: true,
+        allowProtoPropertiesByDefault: true,
+        data: { theme: this }
+      })
     }
   }
 
@@ -41,6 +57,21 @@ export class ProfectusTheme extends MarkdownTheme {
   }
 
   toUrl(mapping: any, reflection: DeclarationReflection) {
-    return `${mapping.directory}/${reflection.getFullName()}.md`;
+    let name = reflection.getFullName();
+    if (name.match(/features\/.*\/.*/) != null && !name.includes("/tabs/")) {
+      name = name.replace(/features\/.*\/(.*)/, "features/$1");
+    }
+    return `${mapping.directory}/${name}.md`;
+  }
+
+  get mappings() {
+    return [
+      {
+        kind: [ReflectionKind.Module],
+        isLeaf: false,
+        directory: 'modules',
+        template: this.getReflectionTemplate(),
+      }
+    ];
   }
 }

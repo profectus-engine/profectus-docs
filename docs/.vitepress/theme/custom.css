@@ -48,3 +48,7 @@ body {
     color: var(--vp-c-text-light-1);
     background-color: var(--vp-code-block-bg);
 }
+
+.vp-doc h3 + h4 {
+    margin-top: 16px;
+}

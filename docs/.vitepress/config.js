@@ -139,7 +139,9 @@ function walk(dir, sidebar) {
     const resolvedFile = path.join(dir, file);
     const stat = fs.statSync(resolvedFile);
     if (stat.isDirectory()) {
-      walk(resolvedFile, sidebar);
+      const subSidebar = { text: camelToTitle(file), items: [], collapsed: true };
+      sidebar.push(subSidebar);
+      walk(resolvedFile, subSidebar.items);
     } else if (!file.includes("Component") || dir.includes("components")) {
       sidebar.push({ text: camelToTitle(file.substr(0, file.length - 3)), link: "/" + resolvedFile.substr(5, resolvedFile.length - 8).replace(/\\/g, "/") + ".html" });
     }

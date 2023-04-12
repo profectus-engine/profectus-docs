@@ -15,14 +15,14 @@ function walk(dir, cb) {
 }
 
 (async () => {
+    // Replace overview file
     fs.copyFileSync("./overview.md", "./docs/api/overview.md");
     fs.unlinkSync("./docs/api/index.md");
-    await walk("./components", (dir, file, resolve) => {
-        const relPath = path.relative("./components", dir);
-        let dest = path.resolve("./docs/api", relPath);
-        if (relPath.includes("features")) {
-            dest = path.resolve("./docs/api/modules", relPath);
-        }
+
+    // Copy components over
+    await walk("./components/components", (dir, file, resolve) => {
+        const relPath = path.relative("./components/components", dir);
+        let dest = path.resolve("./docs/api/components", relPath);
         const filePath = path.resolve(dir, file);
         const stream = fs.createReadStream(filePath);
         let lineCount = 0;
@@ -41,32 +41,53 @@ function walk(dir, cb) {
             resolve();
         });
     });
+
+    // Write features' components to end of file
+    await walk("./components/features", (dir, file, resolve) => {
+        const relPath = path.relative("./components/features", dir);
+        let dest = path.resolve("./docs/api/modules/features", relPath);
+
+        if (relPath == "infoboxes") {
+            dest = dest.slice(0, -2);
+        } else if (relPath === "tabs") {
+            dest += file.includes("TabComponent") ? "\\tab" : "\\tabFamily";
+        }
+
+        try {
+            fs.accessSync(dest + ".md", fs.constants.R_OK | fs.constants.W_OK);
+        } catch (err) {
+            dest = dest.slice(0, -1);
+            try {
+                fs.accessSync(dest + ".md", fs.constants.R_OK | fs.constants.W_OK);
+            } catch (err) {
+                console.log("Couldn't find file at", dest + ".md");
+                resolve();
+                return;
+            }
+        }
+        dest = dest + ".md";
+        let data = fs.readFileSync(dest).toString();
+        const elementData = fs.readFileSync(path.resolve(dir, file));
+        const fd = fs.openSync(dest, "w+");
+        const componentsSection = data.indexOf("## Components");
+        if (componentsSection == -1) {
+            data += `\n## Components\n`;
+        }
+        fs.writeSync(fd, data);
+        fs.writeSync(fd, "\n" + elementData + "\n");
+        fs.closeSync(fd);
+        resolve();
+    });
+
+    // Add frontmatter to every file
     const frontmatter = Buffer.from("---\neditLink: false\n---\n");
     await walk("./docs/api", function addFrontmatter(dir, file, resolve) {
         if (path.extname(file) !== ".md") return;
         const filePath = path.resolve(dir, file);
-        if (dir.endsWith("interfaces")) {
-            fs.unlinkSync(filePath);
-            resolve();
-            return;
-        }
         const data = fs.readFileSync(filePath).toString();
         const fd = fs.openSync(filePath, "w+");
         fs.writeSync(fd, frontmatter);
-        if (!path.relative("./docs/api", dir).includes("components") && !path.basename(file).includes("Component")) {
-            const files = fs.readdirSync(dir).filter(p => p.match(/.*Component.md/));
-            if (files.length > 0) {
-                const firstSectionIndex = data.indexOf("##");
-                fs.writeSync(fd, data.slice(0, firstSectionIndex));
-                const componentsList = `## Components\n\n${files.map(f => `- [${f.slice(0, -12)}](./${f})`).join("\n")}\n\n`;
-                fs.writeSync(fd, componentsList);
-                fs.writeSync(fd, data.slice(firstSectionIndex));
-            } else {
-                fs.writeSync(fd, data);
-            }
-        } else {
-            fs.writeSync(fd, data);
-        }
+        fs.writeSync(fd, data);
         fs.closeSync(fd);
         resolve();
     });
