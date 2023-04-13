@@ -68,4 +68,34 @@
 
 {{/if}}
 
+{{#when this this.kindString 'eq' 'Interface'}}
+
+{{#with this.children}}
+
+{{{typeDeclarationMembers}}}
+
+{{/with}}
+
+{{/when}}
+
+{{#when this this.kindString 'eq' 'Class'}}
+
+{{#with this.children}}
+
+{{{typeDeclarationMembers}}}
+
+{{/with}}
+
+{{/when}}
+
+{{#when this this.kindString 'eq' 'Enumeration'}}
+
+{{#with this.parent.children}}
+
+{{{typeDeclarationMembers}}}
+
+{{/with}}
+
+{{/when}}
+
 {{> member.sources}}

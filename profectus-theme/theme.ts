@@ -14,6 +14,7 @@ import { MarkdownTheme } from 'typedoc-plugin-markdown';
 import registerTypeHelper from './type';
 
 const TEMPLATE_PATH = path.join(__dirname, '..', 'profectus-theme', 'resources', 'templates');
+const PARTIALS_PATH = path.join(__dirname, '..', 'profectus-theme', 'resources', 'partials');
 
 export class ProfectusTheme extends MarkdownTheme {
   constructor(renderer: Renderer) {
@@ -23,7 +24,31 @@ export class ProfectusTheme extends MarkdownTheme {
     this.hideBreadcrumbs = true;
     this.hideInPageTOC = true;
 
-    // registerTypeHelper();
+    const partialFiles = fs.readdirSync(PARTIALS_PATH);
+    partialFiles.forEach((partialFile) => {
+        const partialName = path.basename(partialFile, '.hbs');
+        const partialContent = fs
+            .readFileSync(PARTIALS_PATH + '/' + partialFile)
+            .toString();
+        Handlebars.registerPartial(partialName, partialContent);
+    });
+
+    Handlebars.registerHelper("when", (context, operand_1, operator, operand_2, options) => {
+      let operators = {                     //  {{#when <operand1> 'eq' <operand2>}}
+        'eq': (l,r) => l == r,              //  {{/when}}
+        'noteq': (l,r) => l != r,
+        'gt': (l,r) => (+l) > (+r),                        // {{#when var1 'eq' var2}}
+        'gteq': (l,r) => ((+l) > (+r)) || (l == r),        //               eq
+        'lt': (l,r) => (+l) < (+r),                        // {{else when var1 'gt' var2}}
+        'lteq': (l,r) => ((+l) < (+r)) || (l == r),        //               gt
+        'or': (l,r) => l || r,                             // {{else}}
+        'and': (l,r) => l && r,                            //               lt
+        '%': (l,r) => (l % r) === 0                        // {{/when}}
+      }
+      let result = operators[operator](operand_1,operand_2);
+      if(result) return options.fn(context);
+      return options.inverse(context);
+    });
   }
 
   getReflectionMemberTemplate() {
