@@ -84,7 +84,7 @@ function walk(dir, cb) {
     await walk("./docs/api", function addFrontmatter(dir, file, resolve) {
         if (path.extname(file) !== ".md") return;
         const filePath = path.resolve(dir, file);
-        const data = fs.readFileSync(filePath).toString();
+        const data = fs.readFileSync(filePath).toString().replaceAll(/\[K in keyof T\]/g, "\\[K in keyof T]");
         const fd = fs.openSync(filePath, "w+");
         fs.writeSync(fd, frontmatter);
         fs.writeSync(fd, data);
