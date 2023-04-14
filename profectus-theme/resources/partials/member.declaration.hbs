@@ -48,6 +48,8 @@
 
 {{/each}}
 
+{{> member.sources}}
+
 {{/if}}
 
 {{#if type.declaration.children}}
@@ -90,7 +92,7 @@
 
 {{#when this this.kindString 'eq' 'Enumeration'}}
 
-{{#with this.parent.children}}
+{{#with this.children}}
 
 {{{typeDeclarationMembers}}}
 

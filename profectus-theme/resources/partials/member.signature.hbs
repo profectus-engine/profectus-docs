@@ -1,3 +1,5 @@
+{{#if comment}}
+
 {{{signatureTitle accessor}}}
 
 {{> comment}}
@@ -99,5 +101,27 @@
 {{#if showSources}}
 
 {{> member.sources}}
+
+{{/if}}
+
+{{#if @first}}
+
+{{#unless @last}}
+
+#### Other signatures
+
+{{/unless}}
+
+{{/if}}
+
+{{else}}
+
+{{{signatureTitle accessor}}}
+
+{{#with parameters}}
+
+{{{parameterTable}}}
+
+{{/with}}
 
 {{/if}}
