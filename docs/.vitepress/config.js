@@ -86,6 +86,13 @@ module.exports = {
             { text: "Dynamic Layers", link: "/guide/advanced-concepts/dynamic-layers" },
             { text: "Nodes", link: "/guide/advanced-concepts/nodes" }
           ]
+        },
+        {
+          text: "Migrations",
+          collapsed: true,
+          items: [
+            { text: "0.5.X to 0.6.0", link: "/guide/migrations/0-6" }
+          ]
         }
       ],
     "/api/": generateAPISidebar()

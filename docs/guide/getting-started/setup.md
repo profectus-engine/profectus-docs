@@ -12,14 +12,14 @@ For local development, you will need the following tools:
 Create a new project from the [Profectus repository](https://github.com/profectus-engine/Profectus) by clicking the "Use this template" button. Then, clone the repository locally using the provided link.
 
 ::: info
-The template repository allows easy creation of multiple projects from one repository. However, updating an existing project to a newer version of Profectus can be challenging. Consider [updating Profectus](https://chat.openai.com/updating.md) _before_ starting development to avoid issues with unrelated histories.
+The template repository allows easy creation of multiple projects from one repository. However, updating an existing project to a newer version of Profectus can be challenging. Consider [updating Profectus](./updating.md) _before_ starting development to avoid issues with unrelated histories.
 :::
 
 It's recommended to create a new Git branch for development, allowing you to push changes without affecting the live build. The GitHub workflow will automatically rebuild the page when you push to the `main` branch.
 
 Next, install Profectus' dependencies by running `npm install`. Run `npm run serve` to start a local server hosting your project. The site will automatically reload as you modify files.
 
-Also, follow the steps to [update Profectus](https://chat.openai.com/updating.md) before starting to make future updates easier without worrying about unrelated histories.
+Also, follow the steps to [update Profectus](./updating.md) before starting to make future updates easier without worrying about unrelated histories.
 
 ### Deploying
 
