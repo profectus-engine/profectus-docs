@@ -1,5 +1,11 @@
 # Example Projects
 
+## Kronos <Badge type="tip" text="Profectus 0.6" />
+
+[View Source](https://github.com/thepaperpilot/kronos/)
+
+This is a project that's still under development, but is a good resource for things like implementing custom features.
+
 ## Advent Incremental <Badge type="warning" text="Profectus 0.5" />
 
 [View Source](https://github.com/thepaperpilot/advent-Incremental/) | [View Project](https://www.thepaperpilot.org/advent/)
