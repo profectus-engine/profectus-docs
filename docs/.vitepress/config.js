@@ -42,6 +42,7 @@ module.exports = {
             { text: "Introduction", link: "/guide/" },
             { text: "Setting Up", link: "/guide/getting-started/setup" },
             { text: "Updating Profectus", link: "/guide/getting-started/updating" },
+            { text: "Your First Layer", link: "/guide/getting-started/first-layer" },
             { text: "Example Projects", link: "/guide/getting-started/examples" },
             { text: "Profectus Changelog", link: "https://github.com/profectus-engine/Profectus/blob/main/CHANGELOG.md" }
           ]
