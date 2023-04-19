@@ -5,15 +5,13 @@ Profectus utilizes formulas for various features, such as increasing requirement
 For example, a cost function like `Decimal.pow(this.amount, 1.05).times(100)` can be represented using a Formula: `Formula.variable(this.amount).pow(1.05).times(100)`.
 
 ```ts
-const myRepeatable = createRepeatable(function (this: GenericRepeatable) {
-    return {
-        requirements: createCostRequirement(() => ({
-            resource: points,
-            cost: Formula.variable(this.amount).pow(1.05).times(100)
-        })),
-        maximize: true
-    };
-});
+const myRepeatable = createRepeatable(() => ({
+    requirements: createCostRequirement(() => ({
+        resource: points,
+        cost: Formula.variable(myRepeatable.amount).pow(1.05).times(100)
+    })),
+    maximize: true
+}));
 ```
 
 ## Limitations
