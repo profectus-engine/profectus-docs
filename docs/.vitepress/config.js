@@ -75,6 +75,7 @@ module.exports = {
           text: "Recipes",
           collapsed: false,
           items: [
+            { text: "Prestige Mechanic", link: "/guide/recipes/prestige" },
             { text: "Display Save Progress", link: "/guide/recipes/save-progress" },
             { text: "Display Particle Effect", link: "/guide/recipes/particles" }
           ]
