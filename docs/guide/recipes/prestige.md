@@ -1,10 +1,10 @@
 # Prestige Mechanic
 
-Prestige mechanics are a common feature within incremental games. They involve resetting some amount of progress within the game in exchange for a new currency that persists between these resets. Many games will even have multiple layers of reset mechanics that each reset everything before them.
+Prestige mechanics are a common feature in incremental games. They involve resetting a portion of the game's progress in exchange for a new currency that persists between these resets. Many games even have multiple layers of reset mechanics, each resetting everything that came before them.
 
 ## Create a conversion
 
-The first step is creating a conversion that'll handle calculating how much of the prestige currency gets generated. For our example, let's assume there's a base layer called `main` and a prestige layer called `prestige`. This conversion will be based on the amount of `points` the player has, a resource within `main`. Here's an example conversion, using the formula from [The Prestige Tree](https://jacorb90.me/Prestige-Tree/)'s prestige layer:
+The first step is to create a conversion that will handle calculating the amount of prestige currency generated. In our example, let's assume there's a base layer called `main` and a prestige layer called `prestige`. This conversion will be based on the amount of `points` the player has, a resource within `main`. Here's an example conversion, using the formula from [The Prestige Tree](https://jacorb90.me/Prestige-Tree/)'s prestige layer:
 
 ```ts
 const conversion = createCumulativeConversion(() => ({
@@ -14,11 +14,11 @@ const conversion = createCumulativeConversion(() => ({
 }));
 ```
 
-Keep in mind `points` here refers to `prestige.points` since it's within the `prestige` layer.
+In this case, `points` refers to `prestige.points`, as it's within the `prestige` layer.
 
 ## Create a reset button
 
-Next let's create a button that will perform the reset and generate points. We'll create a clickable, like so:
+Next, create a button that will perform the reset and generate points. Create a clickable like this:
 
 ```ts
 const convertButton = createClickable(() => ({
@@ -32,11 +32,11 @@ const convertButton = createClickable(() => ({
 }));
 ```
 
-This creates a simple clickable that can only be clicked when we'll gain some amount of the prestige currency, and it tells us how much we'll get. This could be further improved by making the display convey how many points the player will need to generate 1 more prestige point.
+This creates a simple clickable that can only be clicked when the player will gain some amount of the prestige currency, and it displays how much they'll get. This can be further improved by displaying how many points the player will need to generate one more prestige point.
 
 ## Resetting previous content
 
-Now we need to go back to the `main` layer. Here we'll create a `reset` feature that gets a list of all the things it needs to reset - for this example, we'll just reset the entire layer:
+Now, return to the `main` layer. Create a `reset` feature that receives a list of all the things it needs to reset - in this example, we'll just reset the entire layer:
 
 ```ts
 const reset = createReset(() => ({
@@ -44,7 +44,7 @@ const reset = createReset(() => ({
 }));
 ```
 
-And then we can modify the convert button to trigger the reset:
+Then, modify the convert button to trigger the reset:
 
 ```ts
 onClick() {
@@ -53,8 +53,8 @@ onClick() {
 }
 ```
 
-If you have multiple tiers of resets, you may add a `onReset` function to each reset that triggers the next reset before it. That will cause the resets to cascade.
+If you have multiple tiers of resets, you may add an `onReset` function to each reset that triggers the next reset before it, causing the resets to cascade.
 
 ## Branching resets
 
-A common pattern for reset mechanics is to display these various layers in a tree and have the tree propagate the resets for you. There are a couple utility functions to help you accomplish this: [createResetButton](../../api/modules/data/common#createresetbutton) and [createLayerTreeNode](../../api/modules/data/common#createlayertreenode). You'll typically place the tree itself in the `main` layer, and create a tree node for each layer. Then you can call the tree's `reset` function with the layer that's resetting and it'll propagate the reset as appropriate.
+A common pattern for reset mechanics is to display these various layers in a tree and have the tree propagate the resets for you. There are a couple of utility functions to help you accomplish this: [createResetButton](../../api/modules/data/common#createresetbutton) and [createLayerTreeNode](../../api/modules/data/common#createlayertreenode). You'll typically place the tree itself in the `main` layer and create a tree node for each layer. Then you can call the tree's `reset` function with the layer that's resetting, and it will propagate the reset as appropriate.
