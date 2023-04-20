@@ -83,7 +83,7 @@ export class ProfectusTheme extends MarkdownTheme {
 
   toUrl(mapping: any, reflection: DeclarationReflection) {
     let name = reflection.getFullName();
-    if (name.match(/features\/.*\/.*/) != null && !name.includes("/tabs/")) {
+    if (name.match(/features\/.*\/.*/) != null && !name.includes("/tabs/") && !name.includes("/decorators/")) {
       name = name.replace(/features\/.*\/(.*)/, "features/$1");
     }
     return `${mapping.directory}/${name}.md`;
