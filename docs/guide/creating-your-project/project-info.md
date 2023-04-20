@@ -50,7 +50,7 @@ By default, this is The Paper Pilot Community, which can act as a catch-all for 
 ### discordLink
 
 - Type: `string`
-- Default: `https://discord.gg/WzejVAx`
+- Default: `https://discord.gg/yJ4fjnjU54`
 
 The link for the discord server to point users to. See [discordName](#discordname) for more details.
 

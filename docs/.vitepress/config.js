@@ -30,7 +30,7 @@ module.exports = {
       { text: "Forums", link: "https://forums.moddingtree.com" }
     ],
     socialLinks: [
-      { icon: "discord", link: "https://discord.gg/F3xveHV" },
+      { icon: "discord", link: "https://discord.gg/yJ4fjnjU54" },
       { icon: "github", link: "https://github.com/profectus-engine/Profectus" }
     ],
     sidebar: {
