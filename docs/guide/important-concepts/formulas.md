@@ -14,6 +14,10 @@ const myRepeatable = createRepeatable(() => ({
 }));
 ```
 
+## Softcaps
+
+Often games incorporate "softcaps" on formulas - that means making the formula step-wise, where everything above a certain value has an additional operation on it that makes it scale differently. Formulas support this via `Formula.step`, which takes a threshold value and a function to modify the formula appropriately. The function gets a formula that will contain a variable for the amount _above_ the threshold of the original value. Whatever result is returned will then be added back onto the threshold to achieve the softcapped value. Take, for example, a formula `Formula.variable().div(10).sqrt()` that we want to apply a softcap to - let's say it should square root everything after 1e100. The softcapped formula will look like this: `Formula.variable().div(10).sqrt().step(1e100, f => f.sqrt())`.
+
 ## Limitations
 
 ### Single Variable
