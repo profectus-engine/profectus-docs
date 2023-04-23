@@ -8,7 +8,7 @@ For example, a cost function like `Decimal.pow(this.amount, 1.05).times(100)` ca
 const myRepeatable = createRepeatable(() => ({
     requirements: createCostRequirement(() => ({
         resource: points,
-        cost: Formula.variable(myRepeatable.amount).pow(1.05).times(100)
+        cost: Formula.variable(myRepeatable.amount).pow_base(1.05).times(100)
     })),
     maximize: true
 }));
@@ -22,7 +22,7 @@ For inverting and integrating, formulas should have a single variable, which ser
 
 The variable is defined by wrapping the input to the formula in `Formula.variable`. In the cost requirement example above, the repeatable's `amount` is the input to the variable. That means inverting the function would calculate the amount based on the cost, and integrating would be finding the area under the curve where the repeatable's `amount` is the x axis and the output of the formula is the y axis.
 
-If the cost formula had not marked a variable, e.g. `Formula.pow(myRepeatable.amount, 1.05).times(100)` then the formula would not be invertible or integrable, and would throw an error if either operation was tried. While `evaluate()` will work as expected, passing a value to `evaluate()` will not, as it will not know what value to override.
+If the cost formula had not marked a variable, e.g. `Formula.pow(1.05, myRepeatable.amount).times(100)` then the formula would not be invertible or integrable, and would throw an error if either operation was tried. While `evaluate()` will work as expected, passing a value to `evaluate()` will not, as it will not know what value to override.
 
 ### Invertibility and Integrability
 
