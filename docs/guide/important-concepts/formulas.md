@@ -20,6 +20,10 @@ const myRepeatable = createRepeatable(() => ({
 
 For inverting and integrating, formulas should have a single variable, which serves as the input. Although other parts of the formula can be computed values, they must not be dependent on the input variable for inverting or integrating purposes. Formulas work correctly as long as changing other parts of the formula doesn't affect the input variable.
 
+The variable is defined by wrapping the input to the formula in `Formula.variable`. In the cost requirement example above, the repeatable's `amount` is the input to the variable. That means inverting the function would calculate the amount based on the cost, and integrating would be finding the area under the curve where the repeatable's `amount` is the x axis and the output of the formula is the y axis.
+
+If the cost formula had not marked a variable, e.g. `Formula.pow(myRepeatable.amount, 1.05).times(100)` then the formula would not be invertible or integrable, and would throw an error if either operation was tried. While `evaluate()` will work as expected, passing a value to `evaluate()` will not, as it will not know what value to override.
+
 ### Invertibility and Integrability
 
 Certain operations may not support inverting or integrating. Functions such as rounding or clamping are non-invertible, while others like super-log are non-integrable. You may only use a single complex operation in addition to add, sub, mult, and div operations. For formulas with two complex operations, a [custom formula](#custom-formulas) is required.
