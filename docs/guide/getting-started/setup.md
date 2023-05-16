@@ -17,7 +17,7 @@ The template repository allows easy creation of multiple projects from one repos
 
 It's recommended to create a new Git branch for development, allowing you to push changes without affecting the live build. The GitHub workflow will automatically rebuild the page when you push to the `main` branch.
 
-Next, install Profectus' dependencies by running `npm install`. Run `npm run serve` to start a local server hosting your project. The site will automatically reload as you modify files.
+Next, install Profectus' dependencies by running `npm install`. Run `npm run dev` to start a local server hosting your project. The site will automatically reload as you modify files.
 
 Also, follow the steps to [update Profectus](./updating.md) before starting to make future updates easier without worrying about unrelated histories.
 
