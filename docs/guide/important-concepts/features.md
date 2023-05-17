@@ -30,6 +30,6 @@ const numUpgrades = computed(() => Object.values(upgrades).length);
 
 ## Tree Shaking
 
-Since Profectus takes advantage of [tree shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking), and type of feature that is not used will not be included in the output of the project. That means users have less code to download, a slight performance boost, and you don't need to worry about feature type-specific settings appearing (such as whether to show maxed challenges).
+Since Profectus takes advantage of [tree shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking), any type of feature that is not used will not be included in the output of the project. That means users have less code to download, a slight performance boost, and you don't need to worry about feature type-specific settings appearing (such as whether to show maxed challenges).
 
 It should be noted that a couple features depend on each other, such as Buyables depending on Clickables. That means you may see features included in the output despite not directly using them. Some features, such as Links and Tooltips, are used by the engine itself and will always be included in the output.
