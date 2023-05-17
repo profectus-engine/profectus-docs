@@ -10,7 +10,7 @@ Template strings need to be wrapped in some HTML element. By default, they'll be
 
 ## Render Functions (JSX)
 
-You can provide a render function and it will be wrapped in a component as well. The intended use for this is to write JSX inside a function, which will get automatically converted into a render function. You can read more about that process on the Vue docs on [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html#render-functions-jsx). Note that JSX must be returned in a function - it does not work "standalone". The CoercableComponent type will enforce this for you.
+You can provide a render function and it will be wrapped in a component as well. The intended use for this is to write JSX inside a function, which will get automatically converted into a render function. You can read more about that process on the Vue docs on [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html#render-functions-jsx). Note that JSX must be returned in a function - it does not work "standalone". The CoercableComponent type will enforce this for you. Also of note is that you can use `<>` and `</>` as wrappers to render multiple elements without a containing element, however keep in mind an empty JSX element such as `jsx(() => <></>)` is invalid and will fail to render.
 
 JSX can use imported components, making this suited for writing the display properties on things like Tabs or Layers. There are also built-in functions to `render` features (either as their own or in a layout via `renderRow` and `renderCol`), so you don't need to import the Vue component for every feature you plan on using.
 
@@ -18,7 +18,7 @@ Typically a feature will accept a `Computable<CoercableComponent>`, which means 
 
 #### Example
 
-```ts
+```tsx
 {
 	display: jsx(() => (
         <>
@@ -29,6 +29,29 @@ Typically a feature will accept a `Computable<CoercableComponent>`, which means 
     )),
 }
 ```
+
+### Slots and Models
+
+Modals and other features that utilize slots are a bit trickier in JSX, as each slot must _also_ be JSX. Here's an example utility for creating modals that correctly uses slots:
+
+```tsx
+function createModal(title: string, body: JSXFunction, otherData = {}) {
+    const showModal = persistent<boolean>(false);
+    const modal = jsx(() => (
+        <Modal
+            modelValue={showModal.value}
+            onUpdate:modelValue={(value: boolean) => (showModal.value = value)}
+            v-slots={{
+                header: () => <h2>{title}</h2>,
+                body
+            }}
+        />
+    ));
+    return { modal, showModal, ...otherData };
+}
+```
+
+That example also shows how to use models in JSX, which are a concept in vue for allowing a component to read and write a value. It requires specifying both the model value as well as a function to update it's value.
 
 ## Components
 
