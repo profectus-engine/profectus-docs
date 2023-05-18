@@ -1,5 +1,11 @@
 # Example Projects
 
+## Planar Pioneers <Badge type="warning" text="Profectus 0.6" />
+
+[View Source](https://github.com/thepaperpilot/planar-pioneers/) | [View Project](https://galaxy.click/play/64)
+
+An incremental game with procedurally generated content.
+
 ## Kronos <Badge type="tip" text="Profectus 0.6" />
 
 [View Source](https://github.com/thepaperpilot/kronos/)
