@@ -2,14 +2,23 @@
   --vp-c-bg: #2E3440;
   --vp-c-bg-alt: #3B4252;
   --vp-c-bg-elv: #3B4252;
+  --vp-c-bg-soft: #3B4252;
   --vp-code-block-bg: #434C5E;
+  --vp-code-color: var(--vp-c-text-light-1);
+  --vp-code-link-color: var(--vp-c-text-light-1);
+  --vp-c-text-1: #D8DEE9;
+  --vp-c-text-2: #E5E9F0;
+  --vp-c-text-3: #ECEFF4;
+  --vp-button-alt-hover-text: var(--vp-c-neutral);
   --vp-c-text-light-1: #D8DEE9;
   --vp-c-text-light-2: #E5E9F0;
   --vp-c-text-light-3: #ECEFF4;
   --vp-c-text-dark-1: #2E3440;
   --vp-c-divider: #4C566A;
   --vp-c-divider-light: #4C566A;
-  --vp-c-brand: #5E81AC;
+  --vp-c-brand-1: #5E81AC;
+  --vp-c-brand-2: var(--vp-c-brand-dark);
+  --vp-c-brand-3: #5E81AC;
   --vp-c-brand-light: #81A1C1;
   --vp-c-brand-dark: #81A1C1;
   --vp-button-brand-border: #81A1C1;
@@ -24,7 +33,6 @@
   --vp-c-gray-light-2: #3B4252;
   --vp-c-gray-light-3: #434C5E;
   --vp-c-gray-light-4: #4C566A;
-  --vp-c-bg-soft: #3B4252;
   --vp-font-family-base: Roboto Mono, monospace;
   --vp-font-family-mono: Roboto Mono, monospace;
 }
