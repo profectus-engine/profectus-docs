@@ -9,13 +9,13 @@
     "build": "vitepress build docs",
     "generate": "tsc --project ./profectus-theme && vue-docgen -c docgen.config.js && cd profectus && vue-typedoc --logLevel Verbose --plugin ../typedoc-theme/index.js --theme profectus --plugin typedoc-plugin-markdown --plugin typedoc-plugin-mdn-links --skipErrorChecking && cd .. && rm docs/api/modules/main.md && node postProcess.js"
   },
-  "repository": "git+https://github.com/profectus-engine/profectus-docs.git",
+  "repository": "git+https://code.incremental.social/profectus/profectus-docs.git",
   "author": "thepaperpilot",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/profectus-engine/profectus-docs/issues"
+    "url": "https://code.incremental.social/profectus/profectus-docs/issues"
   },
-  "homepage": "https://github.com/profectus-engine/profectus-docs#readme",
+  "homepage": "https://code.incremental.social/profectus/profectus-docs#readme",
   "dependencies": {
     "vitepress": "^1.0.0-rc.22"
   },

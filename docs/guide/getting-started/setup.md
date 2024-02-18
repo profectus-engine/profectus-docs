@@ -9,13 +9,13 @@ For local development, you will need the following tools:
 - [git](https://git-scm.com/downloads)
 - [node](https://nodejs.org/en/download/)
 
-Create a new project from the [Profectus repository](https://github.com/profectus-engine/Profectus) by clicking the "Use this template" button. Then, clone the repository locally using the provided link.
+Create a new project from the [Profectus repository](https://code.incremental.social/profectus/Profectus) by clicking the "Use this template" button. Then, clone the repository locally using the provided link.
 
 ::: info
 The template repository allows easy creation of multiple projects from one repository. However, updating an existing project to a newer version of Profectus can be challenging. Consider [updating Profectus](./updating.md) _before_ starting development to avoid issues with unrelated histories.
 :::
 
-It's recommended to create a new Git branch for development, allowing you to push changes without affecting the live build. The GitHub workflow will automatically rebuild the page when you push to the `main` branch.
+It's recommended to create a new Git branch for development, allowing you to push changes without affecting the live build. The workflows will automatically rebuild the page when you push it to the `main` branch.
 
 Next, install Profectus' dependencies by running `npm install`. Run `npm run dev` to start a local server hosting your project. The site will automatically reload as you modify files.
 
@@ -23,19 +23,9 @@ Also, follow the steps to [update Profectus](./updating.md) before starting to m
 
 ### Deploying
 
-Using Git, the repository's workflow action automates deployment. However, you need to grant write permissions for the action in the repository settings. Go to Actions, General, Workflow permissions, and select "Read and write permissions".
+Actions should be enabled by default on new repositories. To deploy, push changes to the main branch. The site will be updated automatically in a few minutes. Check progress or errors from the Actions tab on your repository.
 
-![workflow permissions](./workflow-perms.png)
-
-To deploy, push changes to the main branch. The site will be updated automatically in a few minutes. Check progress or errors from the Actions tab on your repository.
-
-![actions button](./actionsbutton.png)
-
-Enable GitHub Pages in the repo settings to host the generated site. Select the `gh-pages` branch. Perform this step once. This will automatically start another GitHub action to deploy the website.
-
-![github pages](./gh-pages.png)
-
-Upon action completion, your project should be available at `https://<YOUR_GITHUB_USERNAME>.github.io/<YOUR_REPO_NAME>/`. For example, the TMT Demo project hosted at https://github.com/profectus-engine/TMT-Demo is available at https://profectus-engine.github.io/TMT-Demo/.
+Upon action completion, you will now have a `pages` branch which is automatically available at `https://<YOUR_GITHUB_USERNAME>.pages.incremental.social/<YOUR_REPO_NAME>/`. For example, the TMT Demo project hosted at https://code.incremental.social/profectus/TMT-Demo is available at https://profectus.pages.incremental.social//TMT-Demo/.
 
 ### Visual Studio Code Setup
 

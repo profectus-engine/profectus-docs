@@ -52,3 +52,7 @@ body {
 .vp-doc h3 + h4 {
     margin-top: 16px;
 }
+
+.VPSocialLink > svg {
+    width: 30px !important;
+}
