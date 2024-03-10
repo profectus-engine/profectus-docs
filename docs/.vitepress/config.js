@@ -84,6 +84,7 @@ module.exports = {
           text: "Advanced Concepts",
           collapsed: false,
           items: [
+            { text: "Boards", link: "/guide/advanced-concepts/boards" },
             { text: "Creating Features", link: "/guide/advanced-concepts/creating-features" },
             { text: "Dynamic Layers", link: "/guide/advanced-concepts/dynamic-layers" },
             { text: "Nodes", link: "/guide/advanced-concepts/nodes" }
