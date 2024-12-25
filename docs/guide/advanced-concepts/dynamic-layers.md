@@ -8,7 +8,7 @@ When procedurally generating layers with similar structures, consider using a ut
 function getDynLayer(id: string): DynamicLayer {
   const layer = layers[id];
   if (!layer) throw "Layer does not exist";
-  return layer as DynamicLayer; // you might need an "as unknown" after layer
+  return layer as DynamicLayer;
 }
 ```
 

@@ -14,9 +14,9 @@ The `createLayer` function will need a unique ID for your layer and a function t
 
 ```ts
 const id = "p";
-const layer = createLayer(id, function (this: BaseLayer) {
+const layer = createLayer(id, layer => {
     return {
-        display: jsx(() => <>My layer</>)
+        display: () => <>My layer</>
     };
 });
 ```
@@ -37,16 +37,16 @@ In your IDE you'll be able to see the documentation for each parameter - in this
 
 ```ts
 const id = "p";
-const layer = createLayer(id, function (this: BaseLayer) {
+const layer = createLayer(id, layer => {
     const points = createResource<DecimalSource>(0, "prestige points");
 
     return {
         points,
-        display: jsx(() => (
+        display: () => (
             <>
                 <MainDisplay resource={points} />
             </>
-        ))
+        )
     };
 });
 ```
@@ -56,12 +56,12 @@ const layer = createLayer(id, function (this: BaseLayer) {
 Some things happen every tick, such as passive resource generation. You can hook into the update loop using an event bus. There's a global one and one for each layer. For example, within the layer function, you can add this code to our example to increase our points at a rate of 1 per second:
 
 ```ts
-this.on("update", diff => {
+layer.on("update", diff => {
 	points.value = Decimal.add(points.value, diff);
 });
 ```
 
-Note that within the `createLayer`'s function, `this` refers to the layer you're actively creating, and the `diff` parameter represents the seconds that have passed since the last update - which will typically be around 0.05 unless throttling is disabled in the settings. If we wanted to generate an amount other than 1/s, we could multiply diff by the per-second rate.
+Note that the `createLayer`'s function receives a parameter for the base layer, which you may have to add. The `diff` parameter insidde the event callback represents the seconds that have passed since the last update - which will typically be around 0.05 unless throttling is disabled in the settings. If we wanted to generate an amount other than 1/s, we could multiply diff by the per-second rate.
 
 ## Adding an upgrade
 
@@ -85,12 +85,12 @@ We'll add this upgrade to our returned object and our display. Upgrades are a re
 return {
 	points,
 	myUpgrade,
-    display: jsx(() => (
+    display: () => (
         <>
             <MainDisplay resource={points} />
             {render(myUpgrade)}
         </>
-    ))
+    )
 }
 ```
 

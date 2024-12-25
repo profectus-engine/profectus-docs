@@ -2,7 +2,7 @@
 
 Profectus utilizes formulas for various features, such as increasing requirements for repeatables and challenges or determining resource gains in conversions. These formulas often need to be inverted or integrated to enable features like buying multiple levels of a repeatable at once or determining when a conversion will increase resource gains. The Formula class can handle these operations, supporting every function Decimal does, while tracking the operations internally.
 
-For example, a cost function like `Decimal.pow(this.amount, 1.05).times(100)` can be represented using a Formula: `Formula.variable(this.amount).pow(1.05).times(100)`.
+For example, a cost function like `Decimal.pow(amount, 1.05).times(100)` can be represented using a Formula: `Formula.variable(amount).pow(1.05).times(100)`.
 
 ```ts
 const myRepeatable = createRepeatable(() => ({

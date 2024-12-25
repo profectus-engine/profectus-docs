@@ -19,11 +19,10 @@ Next, create the particles feature and render it. You'll also want to track the 
 
 ```ts
 const particles = createParticles(() => ({
-    fullscreen: false,
-    zIndex: -1,
+    style: { zIndex: "-1" },
     boundingRect: ref<null | DOMRect>(null),
     onContainerResized(boundingRect) {
-        this.boundingRect.value = boundingRect;
+        particles.boundingRect.value = boundingRect;
     }
 }));
 ```
@@ -70,11 +69,10 @@ If you're using hot reloading, you might need to reload the particle effect. Her
 
 ```ts
 const particles = createParticles(() => ({
-    fullscreen: false,
-    zIndex: -1,
+    style: { zIndex: "-1" },
     boundingRect: ref<null | DOMRect>(null),
     onContainerResized(boundingRect) {
-        this.boundingRect.value = boundingRect;
+        particles.boundingRect.value = boundingRect;
     },
     onHotReload() {
         Object.values(elements).forEach(element => element.refreshParticleEffect());

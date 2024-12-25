@@ -10,8 +10,10 @@ const addGainUpgrade = createUpgrade(() => ({
         title: "Generator of Genericness",
         description: "Gain 1 point every second"
     },
-    cost: 1,
-    resource: points
+    requirements: createCostRequirement(() => ({
+        resource: noPersist(points),
+        cost: 1
+    }))
 }));
 ```
 
@@ -27,6 +29,18 @@ Since usually you want to access a specific feature, storing them in an object i
 const upgrades = { addGainUpgrade, gainMultUpgrade, upgMultUpgrade };
 const numUpgrades = computed(() => Object.values(upgrades).length);
 ```
+
+## Displays
+
+Most times a feature has some sort of dynamic display, it'll allow you to pass a string or `JSX.Element`, the latter within a function or the former either dynamically or statically.
+
+### Template Strings
+
+Providing a string is the simplest method, although not suitable for complex displays and cannot use Vue components. Recommended for static or simple dynamic displays, such as titles or descriptions on features. These strings will be rendered as text and not be parsed as HTML. Some features may wrap the text in header elements or others as appropriate, but this can be overidden by using JSX instead.
+
+### Render Functions (JSX)
+
+You can provide a render function to have more control over what is displayed. Here you can include vue components and even other features, and is how the layer's display itself should be defined. You can use `<>` and `</>` as wrappers to render multiple elements without a containing element. You can read other details about how JSX works in the Vue docs on [Render Functions & JSX](https://vuejs.org/guide/extras/render-function.html#render-functions-jsx), particularly how advanced featuers like slots and models work.
 
 ## Tree Shaking
 

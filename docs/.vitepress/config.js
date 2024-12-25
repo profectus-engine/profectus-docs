@@ -64,7 +64,6 @@ module.exports = {
           items: [
             { text: "Layers", link: "/guide/important-concepts/layers" },
             { text: "Features", link: "/guide/important-concepts/features" },
-            { text: "Coercable Components", link: "/guide/important-concepts/coercable" },
             { text: "Reactivity", link: "/guide/important-concepts/reactivity" },
             { text: "Persistence", link: "/guide/important-concepts/persistence" },
             { text: "Requirements", link: "/guide/important-concepts/requirements" },
@@ -87,6 +86,7 @@ module.exports = {
             { text: "Boards", link: "/guide/advanced-concepts/boards" },
             { text: "Creating Features", link: "/guide/advanced-concepts/creating-features" },
             { text: "Dynamic Layers", link: "/guide/advanced-concepts/dynamic-layers" },
+            { text: "Mixins and Wrappers", link: "/guide/advanced-concepts/mixins" },
             { text: "Nodes", link: "/guide/advanced-concepts/nodes" }
           ]
         },
@@ -94,7 +94,8 @@ module.exports = {
           text: "Migrations",
           collapsed: true,
           items: [
-            { text: "0.5.X to 0.6.0", link: "/guide/migrations/0-6" }
+            { text: "0.5.X to 0.6.0", link: "/guide/migrations/0-6" },
+            { text: "0.6.X to 0.7.0", link: "/guide/migrations/0-7" }
           ]
         }
       ],

@@ -7,14 +7,14 @@ To get started with a board, with a node that's just an upgrade locked to a spec
 ```ts
 const upgrade = createUpgrade({
 	class: "board-node",
-	style: "transform: translate(100px, 100px)",
+	style: { transform: "translate(100px, 100px)" },
 	/** snip **/
 });
 
 /** snip **/
 
 // Render function
-jsx(() => <Board>
+() => (<Board>
 	{render(upgrade)}
 </Board>);
 ```
@@ -113,11 +113,7 @@ makeDraggable(upgrade, {
     hasDragged,
     nodeBeingDragged,
     dragDelta,
-    onMouseUp() {
-        if (!hasDragged.value) {
-            upgrade.purchase();
-        }
-    }
+    onMouseUp: upgrade.purchase
 });
 ```
 
@@ -145,7 +141,7 @@ The board system is intended to be very generic, allowing you to make whatever s
 Keep in mind, for performance reasons, it may be beneficial to put many elements in one `SVGNode`, particularly if they don't need to use the event handlers. For example, examples like this where you're rendering lines connecting various nodes:
 
 ```ts
-const links = jsx(() => (
+const links = () => (
     <>
         {nodes.value
             .reduce(
@@ -184,7 +180,7 @@ const links = jsx(() => (
                 />
             ))}
     </>
-));
+);
 
 // And then in the render function:
 <SVGNode>{links()}</SVGNode>

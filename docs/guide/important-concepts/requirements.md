@@ -9,14 +9,13 @@ To create a requirement, you can use one of the provided utility functions like 
 Cost requirements are probably the most common requirement you'll be using. For something with multiple levels, like repeatables, you'll typically want to use a formula for the cost instead of a function, and the input to the formula will be the repeatable's `amount` property. Typically that means the code will look like this:
 
 ```ts
-createRepeatable(repeatable => ({
-  requirements: createCostRequirement(() => ({
-    resource: points,
-    cost: Formula.variable(repeatable.amount).add(1).times(100)
-  }))
+const repeatable = createRepeatable(() => ({
+    requirements: createCostRequirement(() => ({
+        resource: noPersist(points),
+        cost: Formula.variable(repeatable.amount).add(1).times(100)
+    }))
 }));
 ```
-Important to note here is the parameter added to the `createRepeatable`'s options function. That is a reference to the repeatable being created, so you can access it's `amount` property in the formula.
 
 ## Using Requirements
 
