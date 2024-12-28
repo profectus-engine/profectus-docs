@@ -56,3 +56,11 @@ body {
 .VPSocialLink > svg {
     width: 30px !important;
 }
+
+.VPBadge {
+    color: var(--vp-badge-info-text) !important;
+}
+
+.title {
+    border-bottom: none !important;
+}

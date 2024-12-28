@@ -11,7 +11,6 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
-    ['script', { defer: true, 'data-domain': 'moddingtree.com', src: 'https://plausible.io/js/plausible.js' }],
     ['meta', { name: 'og:description', content: 'A game engine that grows with you' }],
     ['meta', { name: 'og:image', content: '/Logo.png' }]
   ],
@@ -21,12 +20,12 @@ module.exports = {
   themeConfig: {
     logo: "/favicon.svg",
     editLink: {
-      pattern: "https://code.incremental.social/profectus/profectus-docs/edit/main/docs/:path",
+      pattern: "https://code.incremental.social/profectus/profectus-docs/_edit/main/docs/:path",
       editLinkText: "Edit this page on Incremental Social"
     },
     nav: [
       { text: "Guide", link: "/guide/", activeMatch: "^/guide/" },
-      { text: "API", link: "/api/overview", activeMatch: "^/api/" },
+      { text: "API", link: "/api", activeMatch: "^/api/" },
       { text: "Forums", link: "https://forums.moddingtree.com" }
     ],
     socialLinks: [
@@ -76,7 +75,8 @@ module.exports = {
           items: [
             { text: "Prestige Mechanic", link: "/guide/recipes/prestige" },
             { text: "Display Save Progress", link: "/guide/recipes/save-progress" },
-            { text: "Display Particle Effect", link: "/guide/recipes/particles" }
+            { text: "Display Particle Effect", link: "/guide/recipes/particles" },
+            { text: "Resources on Forums", link: "https://forums.moddingtree.com/tags/c/modding-help/resources/17/profectus" }
           ]
         },
         {
@@ -101,69 +101,15 @@ module.exports = {
       ],
     "/api/": generateAPISidebar()
     }
+  },
+  markdown: {
+    theme: {
+      light: "material-theme-palenight",
+      dark: "material-theme-palenight"
+    }
   }
 }
 
 function generateAPISidebar() {
-  const sidebar = [];
-
-  const modules = fs.readdirSync("./docs/api/modules");
-  modules.forEach(file => {
-    const moduleSidebar = { text: camelToTitle(file), items: [], collapsed: file === "lib" };
-    sidebar.push(moduleSidebar)
-    walk(path.join("./docs/api/modules", file), moduleSidebar.items);
-  });
-
-  const componentFolders = [];
-  walk("./docs/api/components", componentFolders);
-  sidebar.unshift({
-    text: "Components",
-    collapsed: true,
-    items: componentFolders
-  });
-
-  sort(sidebar);
-
-  return sidebar;
-}
-
-function sort(sidebar) {
-  sidebar.filter(sidebar => !!sidebar.items).forEach(item => sort(item.items));
-  sidebar.sort((a, b) => {
-    if (a.items && !b.items) {
-      return -1;
-    } else if (!a.items && b.items) {
-      return 1;
-    } else if (a.text > b.text) {
-      return 1;
-    } else if (a.text < b.text) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
-}
-
-function walk(dir, sidebar) {
-  const files = fs.readdirSync(dir);
-  files.forEach(file => {
-    const resolvedFile = path.join(dir, file);
-    const stat = fs.statSync(resolvedFile);
-    if (stat.isDirectory()) {
-      const subSidebar = { text: camelToTitle(file), items: [], collapsed: true };
-      sidebar.push(subSidebar);
-      walk(resolvedFile, subSidebar.items);
-    } else if (!file.includes("Component") || dir.includes("components")) {
-      sidebar.push({ text: camelToTitle(file.substr(0, file.length - 3)), link: "/" + resolvedFile.substr(5, resolvedFile.length - 8).replace(/\\/g, "/") + ".html" });
-    }
-  });
-}
-
-function camelToTitle(camel) {
-    if (camel === "break_eternity") {
-      return "Break Eternity";
-    }
-    let title = camel.replace(/([A-Z])/g, " $1");
-    title = title.charAt(0).toUpperCase() + title.slice(1);
-    return title;
+  return JSON.parse(fs.readFileSync("./typedoc-sidebar.json").toString().replaceAll("..\\\\docs\\\\", ""));
 }

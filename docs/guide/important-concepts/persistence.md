@@ -10,6 +10,6 @@ It's important for saving and loading these properties for these refs to be in a
 
 Additionally, this structure should typically remain consistent between project versions. If a value is in a new location, it will not load the value from localStorage correctly. This is exacerbated if two values swap places, such as when an array is re-ordered. In the event a creator changes this structure anyways, the [fixOldSave](../creating-your-project/project-entry.md#fixoldsave) function can be used to migrate the old player save data to the new structure expected by the current version of the project.
 
-As of Profectus 0.6, save data will now report warnings whenever there is redundancy - two locations for the same persistent data, which creates larger saves that can cause issues when loading after updates. To fix redundancies, wrap all but one location for the data in [noPersist](../../api/modules/game/persistence#nopersist).
+As of Profectus 0.6, save data will now report warnings whenever there is redundancy - two locations for the same persistent data, which creates larger saves that can cause issues when loading after updates. To fix redundancies, wrap all but one location for the data in [noPersist](/api/game/persistence/functions/noPersist).
 
 One place to look out for specifically is tree nodes, which typically have a persisten `pinned` value and can appear in both the nodes array as well as the links array.

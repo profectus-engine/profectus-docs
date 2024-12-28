@@ -34,7 +34,7 @@ Certain operations may not support inverting or integrating. Functions such as r
 
 ### Spending Resources
 
-When working with formulas, the `spendResources` property determines whether the formula needs to be invertible or integrable. The property is used in two utilities: [calculateMaxAffordable](/api/modules/game/formulas/formulas#calculatemaxaffordable) and [calculateCost](/api/modules/game/formulas/formulas#calculatecost). These utilities are ultimately employed wherever formulas are used, such as in cost requirements or conversions.
+When working with formulas, the `spendResources` property determines whether the formula needs to be invertible or integrable. The property is used in two utilities: [calculateMaxAffordable](/api/game/formulas/formulas/functions/calculateMaxAffordable) and [calculateCost](/api/game/formulas/formulas/functions/calculateCost). These utilities are ultimately employed wherever formulas are used, such as in cost requirements or conversions.
 
 Spending resources refers to whether max affordability and cost calculations should account for resources spent. If spending resources is set to true, the formula will be integrated and inverted, albeit with certain limitations. For example, exponential modifiers and soft caps can make a formula non-integrable.
 
@@ -44,7 +44,7 @@ Integration in this context is an estimation, as it calculates the area under a 
 
 ### Modifiers
 
-When applying changes to a formula using [modifiers](/api/modules/game/modifiers), use the `modifierToFormula` utility to apply the modifier while preserving invertibility if the modifier is invertible.
+When applying changes to a formula using [modifiers](/api/game/modifiers/), use the `modifierToFormula` utility to apply the modifier while preserving invertibility if the modifier is invertible.
 
 ### Custom Formulas
 

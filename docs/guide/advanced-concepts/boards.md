@@ -1,6 +1,6 @@
 # Boards
 
-The Board component allows you to make a pannable and zoomable "board" of components, called nodes. Instead of laying things out using the DOM, everything inside a board should be absolutely positioned. There are various utilities included in [board.ts](/api/modules/game/boards/board) to assist with implementing common behaviors with boards. Also, most of these code snippets are modified from [this Board example](https://code.incremental.social/thepaperpilot/Profectus/src/branch/board-example), which may make a useful reference while implementing your own boards.
+The Board component allows you to make a pannable and zoomable "board" of components, called nodes. Instead of laying things out using the DOM, everything inside a board should be absolutely positioned. There are various utilities included in [board.tsx](/api/game/boards/board) to assist with implementing common behaviors with boards. Also, most of these code snippets are modified from [the demo project](https://code.incremental.social/profectus/Profectus-Demo/src/branch/main/src/data/layers/board.tsx), which may make a useful reference while implementing your own boards.
 
 To get started with a board, with a node that's just an upgrade locked to a specific location, it would look like this:
 
@@ -23,11 +23,11 @@ const upgrade = createUpgrade({
 
 There is a common (not Board specific) utility for creating a ref, along with a setter and "clearer" that works perfectly for situations where you'd like to let the player select at most 1 of a group of like things. To use it, you'll want to clear the selection on mouse down on either a node or the Board itself, and set the selection on mouse up on a selectable node.
 
-Note you'll typically want to store an ID rather than the node itself, so that if you make the selection persistent you can still easily determine which node was chosen, even if all their other properties are identical. The easiest way to get guaranteed unique IDs for every node is to include an `id` property on every node and use the [setupUniqueIds](/api/modules/game/boards/board#setupUniqueIds) utility which will give you a ref with the value of a valid unique ID you can use for any newly created node.
+Note you'll typically want to store an ID rather than the node itself, so that if you make the selection persistent you can still easily determine which node was chosen, even if all their other properties are identical. The easiest way to get guaranteed unique IDs for every node is to include an `id` property on every node and use the [setupUniqueIds](/api/game/boards/board/functions/setupUniqueIds) utility which will give you a ref with the value of a valid unique ID you can use for any newly created node.
 
 ## Dragging Nodes
 
-Draggable nodes are substantially more complicated. Ultimately you'll want to use either [setupDraggableNode](/api/modules/game/boards/board#setupDraggableNode) and, if applicable, [makeDraggable](/api/modules/game/boards/board#makeDraggable), but from there hooking everything up is still a fairly manual process.
+Draggable nodes are substantially more complicated. Ultimately you'll want to use either [setupDraggableNode](/api/game/boards/board/functions/setupDraggableNode) and, if applicable, [makeDraggable](/api/game/boards/board/functions/makeDraggable), but from there hooking everything up is still a fairly manual process.
 
 Similar to selecting nodes, draggable nodes should also typically be based on IDs. Assuming your nodes have x and y properties for their actual position, your `setupDraggableNode` call should look something like this:
 

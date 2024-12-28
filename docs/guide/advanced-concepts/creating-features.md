@@ -8,7 +8,7 @@ Every feature has an interface for the feature itself as well as an options obje
 
 The feature should typically have a `type` property pointing to a symbol unique to this feature, so they can be easily differentiated at runtime. If it's a feature that should be renderable, then it'll also need to make sure the options extends `VueFeatureOptions` and the feature itself `VueFeature`. These will handle allowing it to be rendered using the `render` utility function and handle things like style, classes, visibility, a unique ID, and adding its [node](./nodes) to the layer or modal's context.
 
-The constructor itself should do several things. They should take their options within a function, so that they're not resolved when the object is constructed. It should return a lazy proxy of the feature, which allows features to reference each other and only resolve themselves once every feature is defined. The constructor should create any persistent refs it may require outside of the lazy proxy - it won't have access to the options at this point, so it should make any it _potentially_ may require. Any that turn out not being needed can be [deleted](/api/modules/game/persistence#deletepersistent). Inside the lazy proxy the constructor should create the feature object, including the extra properties in the options object, vue feature mixin, and use [processGetter](/api/modules/util/computed#processgetter) on every computable type. You should ensure the feature object `satisfies` the feature interface, and then return it.
+The constructor itself should do several things. They should take their options within a function, so that they're not resolved when the object is constructed. It should return a lazy proxy of the feature, which allows features to reference each other and only resolve themselves once every feature is defined. The constructor should create any persistent refs it may require outside of the lazy proxy - it won't have access to the options at this point, so it should make any it _potentially_ may require. Any that turn out not being needed can be [deleted](/api/game/persistence/functions/deletePersistent). Inside the lazy proxy the constructor should create the feature object, including the extra properties in the options object, vue feature mixin, and use [processGetter](/api/util/computed/functions/processGetter) on every computable type. You should ensure the feature object `satisfies` the feature interface, and then return it.
 
 The vue feature mixin will require a string unique to the feature as well as a function to get a `JSX.Element` for this feature. Typically that just means returning the vue component made for this feature, passing in props from the feature object.
 
@@ -16,7 +16,7 @@ Because typescript does not emit JS, if a property is supposed to be a function 
 
 ## Vue Components
 
-Any vue components you write need to do a couple things. Typically they'll need to type each prop directly, but you can just type it as the property on the feature itself. That is, you can't do `defineProps<MyFeature>()` but you can do `defineProps<{ display: MyFeature["display"]; }>()`. If there are custom displays this feature may have, you'll want to create a PascalCase variable that is just a function passing the prop into the [render](/api/modules/util/vue#render) utility, like this:
+Any vue components you write need to do a couple things. Typically they'll need to type each prop directly, but you can just type it as the property on the feature itself. That is, you can't do `defineProps<MyFeature>()` but you can do `defineProps<{ display: MyFeature["display"]; }>()`. If there are custom displays this feature may have, you'll want to create a PascalCase variable that is just a function passing the prop into the [render](/api/util/vue/functions/render) utility, like this:
 
 `const Title = () => render(props.title);`
 
@@ -32,7 +32,7 @@ declare module "game/settings" {
 }
 ```
 
-Next you must set the default value of this setting when the settings is loaded, which happens during the `loadSettings` event emitted on the [global bus](/api/modules/game/events#globalbus). This is how that looks like for the same `hideChallenges` setting from above:
+Next you must set the default value of this setting when the settings is loaded, which happens during the `loadSettings` event emitted on the [global bus](/api/game/events/variables/globalBus). This is how that looks like for the same `hideChallenges` setting from above:
 
 ```ts
 globalBus.on("loadSettings", settings => {
@@ -61,7 +61,7 @@ globalBus.on("setupVue", () =>
 
 ## Updating Features
 
-If your custom feature requires running some sort of update method every tick, you'll want to search layers when they're added for any features of this type (using the [findFeatures](/api/modules/features/feature#findfeatures) utility), add an event handler for every `update`/`postUpdate`/`preUpdate`, and clean it up when the layer is removed. Here's how this looks like for the `action` feature:
+If your custom feature requires running some sort of update method every tick, you'll want to search layers when they're added for any features of this type (using the [findFeatures](/api/features/feature/functions/findFeatures) utility), add an event handler for every `update`/`postUpdate`/`preUpdate`, and clean it up when the layer is removed. Here's how this looks like for the `action` feature:
 
 ```ts
 const listeners: Record<string, Unsubscribe | undefined> = {};

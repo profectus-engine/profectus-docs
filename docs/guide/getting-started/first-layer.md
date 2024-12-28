@@ -8,7 +8,7 @@ This page is a guide on where to start with creating your very first layer. It i
 The template comes with a layer in `projEntry.tsx` and another in `prestige.tsx`. You can use those as a base instead of creating a new one from scratch.
 :::
 
-To add a new layer, first create it via the [createLayer](../../api/modules/game/layers#createlayer) function. You typically create a single layer per file, the first being in `projEntry`. After it is created, you'll need to add it to the returned array in [getInitialLayers](../../api/modules/data/projEntry#getinitiallayers).
+To add a new layer, first create it via the [createLayer](/api/game/layers/functions/createLayer) function. You typically create a single layer per file, the first being in `projEntry`. After it is created, you'll need to add it to the returned array in [getInitialLayers](/api/data/projEntry/functions/getInitialLayers).
 
 The `createLayer` function will need a unique ID for your layer and a function that constructs the layer. At a minimum, it needs a `display` property so Profectus knows what to render. It will look something like this:
 
@@ -27,13 +27,13 @@ Game elements in Profectus are called "features". You'll create them inside the 
 
 In the file tree, there's a folder called `src/features`, which contains all the different features that are included in Profectus (and any others you've created or downloaded from others!). You can browse the folder to see all the features and learn what each one does. Some features also have dedicated guide pages on how to use them.
 
-Let's add one of these features to our layer: a Resource. As with most features, there's a [createResource](../../api/modules/features/resource#createresource) constructor for creating this feature. These constructors typically take a function that returns an object with all the options for that feature. However, resources are simple features, so they just take the options as parameters. Creating a resource will look like this:
+Let's add one of these features to our layer: a Resource. As with most features, there's a [createResource](/api/features/resources/resource/functions/createResource) constructor for creating this feature. These constructors typically take a function that returns an object with all the options for that feature. However, resources are simple features, so they just take the options as parameters. Creating a resource will look like this:
 
 ```ts
 const points = createResource<DecimalSource>(0, "prestige points");
 ```
 
-In your IDE you'll be able to see the documentation for each parameter - in this case, the first one is the default value for this resource, and the second is the display name for the resource. Now we can make sure to add the points to our layer's object and display it using the [MainDisplay](../../api/modules/features/resource#maindisplay-component) Vue component. All in all, our layer should look like this now:
+In your IDE you'll be able to see the documentation for each parameter - in this case, the first one is the default value for this resource, and the second is the display name for the resource. Now we can make sure to add the points to our layer's object and display it using the [MainDisplay](/api/features/resources/components/MainDisplay) Vue component. All in all, our layer should look like this now:
 
 ```ts
 const id = "p";
@@ -65,7 +65,7 @@ Note that the `createLayer`'s function receives a parameter for the base layer, 
 
 ## Adding an upgrade
 
-Let's add a more complex feature to the layer now - an upgrade. Upgrades represent one-time purchases. This time the [createUpgrade](../../api/modules/features/upgrade#createupgrade) function requires an options function. We can create a lambda that returns the options object. We'll need to give it a cost requirement and display. Afterwards, it should look like this:
+Let's add a more complex feature to the layer now - an upgrade. Upgrades represent one-time purchases. This time the [createUpgrade](/api/features/clickables/upgrade/functions/createUpgrade) function requires an options function. We can create a lambda that returns the options object. We'll need to give it a cost requirement and display. Afterwards, it should look like this:
 
 ```ts
 const myUpgrade = createUpgrade(() => ({
@@ -79,7 +79,7 @@ const myUpgrade = createUpgrade(() => ({
 }));
 ```
 
-We'll add this upgrade to our returned object and our display. Upgrades are a renderable feature, which means we can use the [render](../../api/modules/util/vue#render) function to display them. The returned layer object will now look like this:
+We'll add this upgrade to our returned object and our display. Upgrades are a renderable feature, which means we can use the [render](/api/util/vue/functions/render) function to display them. The returned layer object will now look like this:
 
 ```ts
 return {
