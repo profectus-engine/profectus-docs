@@ -94,7 +94,7 @@ function sort(a, b) {
         const fd = fs.openSync(filePath, "w+");
         fs.writeSync(fd, frontmatter);
         if (dir.includes("components")) {
-            fs.writeSync(fd, `[Profectus](../../../index.md) / ${relPath.replaceAll("\\", "/").replaceAll("/components", "")} / ${path.basename(file).replace(".md", "")}\n\n`)
+            fs.writeSync(fd, `[Profectus](${path.relative(dir, "./docs/api").replaceAll("\\", "/") + "/index.md"}) / ${relPath.replaceAll("\\", "/").replaceAll("/components", "")} / ${path.basename(file).replace(".md", "")}\n\n`)
         }
         fs.writeSync(fd, data);
         fs.closeSync(fd);

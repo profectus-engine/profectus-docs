@@ -1,6 +1,6 @@
 # Boards
 
-The Board component allows you to make a pannable and zoomable "board" of components, called nodes. Instead of laying things out using the DOM, everything inside a board should be absolutely positioned. There are various utilities included in [board.tsx](/api/game/boards/board) to assist with implementing common behaviors with boards. Also, most of these code snippets are modified from [the demo project](https://code.incremental.social/profectus/Profectus-Demo/src/branch/main/src/data/layers/board.tsx), which may make a useful reference while implementing your own boards.
+The Board component allows you to make a pannable and zoomable "board" of components, called nodes. Instead of laying things out using the DOM, everything inside a board should be absolutely positioned. There are various utilities included in [board.tsx](/api/game/boards/board/) to assist with implementing common behaviors with boards. Also, most of these code snippets are modified from [the demo project](https://code.incremental.social/profectus/Profectus-Demo/src/branch/main/src/data/layers/board.tsx), which may make a useful reference while implementing your own boards.
 
 To get started with a board, with a node that's just an upgrade locked to a specific location, it would look like this:
 
