@@ -32,8 +32,6 @@ Upon action completion, you will now have a `pages` branch which is automaticall
 If you don't have a preferred IDE, Profectus is developed in [Visual Studio Code](https://code.visualstudio.com) and is known to work well with it.
 
 Recommendations:
-- Use [Take Over Mode](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode) for proper type analysis
-- Turn off `.value` autocomplete by running the `Preferences: Open Settings` command and setting `volar.autoCompleteRefs` to `false`
 - Disable emmet expansions by setting `emmet.showExpandedAbbreviation` to `"never"`, also in the preferences
 - Install the [Vitest VS Code extension](https://marketplace.visualstudio.com/items?itemName=ZixuanChen.vitest-explorer&ssr=false#qna) for running and debugging unit tests (if working on the engine itself)
 
