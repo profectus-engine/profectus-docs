@@ -6,8 +6,8 @@ With a proper IDE, such as [Visual Studio Code](../getting-started/setup#visual-
 
 Vue's reactivity is probably the "quirkiest" part of Profectus, and not even the documentation makes all of those quirks clear. It is recommend to read [this thread](https://github.com/vuejs/docs/issues/849) of common misconceptions around Vue reactivity.
 
-## Computable
+## Optionally computable values
 
-Most properties on features will accept `Computable` values. Computable values can either be a raw value, a ref to the value, or a function that returns the value. In the lattermost case it will be wrapped in `computed`, turning it into a ref. The feature type will handle it being a ref or a raw value by using `unref` when accessing those values. With type hints, your IDE should correctly identify these values as refs or raw values so you can treat them as the types they actually are.
+Most properties on features will accept `MaybeRefOrGetter` values. These properties can receive either a raw value, a ref to the value, or a function that returns the value. In the lattermost case it will be wrapped in `computed`, turning it into a ref. The feature type will handle it being a ref or a raw value by using `unref` when accessing those values. With type hints, your IDE should correctly identify these values as refs or raw values so you can treat them as the types they actually are.
 
 Because functions are automatically wrapped in `computed` for many properties, it might be expected to happen to custom properties you add to a feature that isn't defined by the feature type. These functions will _not_ be wrapped, and if you want it cached you should wrap it in a `computed` yourself. This does, however, allow you to include custom methods on a feature without worry.

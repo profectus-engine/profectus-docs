@@ -10,7 +10,7 @@ This file has 3 things it must export, but beyond that can export anything the c
 
 ### getInitialLayers
 
-- Type: `(player: Partial<PlayerData>) => GenericLayer[]`
+- Type: `(player: Partial<PlayerData>) => Layer[]`
 
 A function that is given a player save data object currently being loaded, and returns a list of layers that should be active for that player. If a project does not have dynamic layers, this should always return a list of all layers. 
 

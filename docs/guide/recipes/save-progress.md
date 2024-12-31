@@ -11,18 +11,16 @@ This recipe will involve modifying the `Save.vue` file within your project to in
 Let's start with creating the coerced component. For this recipe we're going to make a couple assumptions about what this display should be. We'll assume the text will be more complex than displaying a single value. That is, at different stages of the game progress will be indicated by different metrics. We'll also assume it will be a single line of descriptive text - no images or anything else that would justify making a new .vue component. Breaking these assumptions is left as an exercise for the reader. But for now, with those assumptions in mind, we'll write our component (in the `<script>` tag in `Save.vue`) similar to this example:
 
 ```ts
-const progressDisplay = computeComponent(
-    computed(() => {
-    	if (someCondition) {
-    		return "Just started";
-    	}
-    	if (someOtherCondition) {
-    		return `Early game; ${formatWhole(someResourceValue)} resource name`;
-    	}
-    	...
-    	return "Unknown progress";
-    })
-);
+const progressDisplay = computed(() => {
+	if (someCondition) {
+		return "Just started";
+	}
+	if (someOtherCondition) {
+		return `Early game; ${formatWhole(someResourceValue)} resource name`;
+	}
+	...
+	return "Unknown progress";
+});
 ```
 
 This code will create a component that will simply render the returned text, and update as required. However, there's one significant complication in writing the code for these conditions and resource values: you're working with a potentially incomplete save data object.
@@ -50,8 +48,10 @@ The `Save.vue` template contains, amongst other things, an element that displays
     </button>
     <span class="save-version">v{{ save.modVersion }}</span
     ><br />
-    <div v-if="currentTime">Last played {{ dateFormat.format(currentTime) }}</div>
-++  <div v-if="progressDisplay"><component :is="progressDisplay" /></div>
+    <div v-if="currentTime" class="time">
+        Last played {{ dateFormat.format(currentTime) }}
+    </div>
+    <div v-if="progressDisplay">{{ progressDisplay }}</div>
 </div>
 ```
 

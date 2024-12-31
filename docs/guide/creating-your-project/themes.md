@@ -25,5 +25,3 @@ Toggles whether to display tab buttons in a tab list, similar to how a browser d
 - Type: `boolean`
 
 If true, elements in a row or column will have their margins removed and border radiuses set to 0 between elements. This will cause the elements to appear as segments in a single object. 
-
-Currently, this can only merge in a single dimension. Rows of columns or columns of rows will not merge into a single rectangular object.
