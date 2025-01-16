@@ -54,7 +54,7 @@ function sort(a, b) {
             }
             currentSidebar = nextSidebar.items;
         });
-        currentSidebar.push({ text: path.basename(file).replace(".md", ""), link: `/..\\docs\\api/${relPath.replace("\\", "/")}/${path.basename(file)}` });
+        currentSidebar.push({ text: path.basename(file).replace(".md", ""), link: `/..\\api/${relPath.replace("\\", "/")}/${path.basename(file)}` });
         currentSidebar.sort(sort);
         const filePath = path.resolve(dir, file);
         const stream = fs.createReadStream(filePath);
