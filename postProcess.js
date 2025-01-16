@@ -28,6 +28,7 @@ function sort(a, b) {
     // Update sidebar file
     const sidebarText = fs.readFileSync("./docs/api/typedoc-sidebar.json")
         .toString()
+        .replaceAll(/"[^"]*\/docs\/api\//, '"/api/')
         .replaceAll('{"text":"Functions","collapsed":true', '{"text":"Functions","collapsed":false')
         .replaceAll('{"text":"Interfaces","collapsed":true', '{"text":"Interfaces","collapsed":false')
         .replaceAll('{"text":"Type Aliases","collapsed":true', '{"text":"Type Aliases","collapsed":false')
@@ -54,7 +55,7 @@ function sort(a, b) {
             }
             currentSidebar = nextSidebar.items;
         });
-        currentSidebar.push({ text: path.basename(file).replace(".md", ""), link: `/..\\api/${relPath.replace("\\", "/")}/${path.basename(file)}` });
+        currentSidebar.push({ text: path.basename(file).replace(".md", ""), link: `/api/${relPath.replace("\\", "/")}/${path.basename(file)}` });
         currentSidebar.sort(sort);
         const filePath = path.resolve(dir, file);
         const stream = fs.createReadStream(filePath);
