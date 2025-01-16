@@ -5,7 +5,7 @@ on:
       - 'main'
 jobs:
   build-and-deploy:
-    if: github.repository == 'profectus-engine/profectus-docs'
+    if: github.repository == 'profectus/profectus-docs'
     runs-on: docker
     steps:
       - name: Setup RSync
