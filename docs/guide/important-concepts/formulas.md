@@ -6,8 +6,8 @@ For example, a cost function like `Decimal.pow(amount, 1.05).times(100)` can be 
 
 ```ts
 const myRepeatable = createRepeatable(() => ({
-    requirements: createCostRequirement(() => ({
-        resource: points,
+    requirements: createCostRequirement((): CostRequirementOptions => ({
+        resource: noPersist(points),
         cost: Formula.variable(myRepeatable.amount).pow_base(1.05).times(100)
     })),
     maximize: true

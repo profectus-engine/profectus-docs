@@ -63,6 +63,25 @@ watch(
 
 This code watches for whether the node exists and the `boundingRect` exists, which are required to display the effect. You can additionally watch any other values that would have an impact on the particle effect, like whether or not it should be emitting.
 
+For a "one-shot" animation (one that just gets played once when something happens and then deleted), you can simplify the code a bit:
+
+```ts
+watch(achievement.earned, earned => {
+    const rect = layer.nodes.value[achievement.id]?.rect;
+    const boundingRect = particles.boundingRect.value;
+    if (earned && rect != null && boundingRect != null) {
+        particles.addEmitter(particleEffect).then(emitter => {
+            emitter.updateOwnerPos(
+                rect.x + rect.width / 2 - boundingRect.x,
+                rect.y + rect.height / 2 - boundingRect.y
+            );
+            emitter.resetPositionTracking();
+            emitter.playOnceAndDestroy();
+        });
+    }
+});
+```
+
 ## Support Hot Reloading
 
 If you're using hot reloading, you might need to reload the particle effect. Here's an example from Kronos of adding the callback to the particles constructor:
